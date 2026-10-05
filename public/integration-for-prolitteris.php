@@ -6,7 +6,6 @@
  * Description: Adds the ProLitteris tracking pixel to posts and reports texts to ProLitteris ("Onlinewerke entschädigen").
  * Version: 2.0.0
  * Requires at least: 6.6
- * Tested up to: 7.1
  * Requires PHP: 8.2
  * Author: Palasthotel <webmaster@palasthotel.de>
  * Author URI: https://palasthotel.de
