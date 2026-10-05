@@ -49,9 +49,9 @@ The service is provided by ProLitteris, Swiss Copyright Society for Literature a
 
 The connection can also be configured in `wp-config.php`, which takes precedence over the settings page:
 
-`define( 'PH_PRO_LITTERIS', true );`
-`define( 'PH_PRO_LITTERIS_SYSTEM', 'https://owen.prolitteris.ch' );`
-`define( 'PH_PRO_LITTERIS_CREDENTIALS', 'member number:username:password' );`
+`define( 'PRO_LITTERIS_ENABLED', true );`
+`define( 'PRO_LITTERIS_SYSTEM', 'https://owen.prolitteris.ch' );`
+`define( 'PRO_LITTERIS_CREDENTIALS', 'member number:username:password' );`
 `define( 'PRO_LITTERIS_AUTO_MESSAGES', true );`
 
 == Frequently Asked Questions ==
@@ -66,7 +66,7 @@ ProLitteris only remunerates texts with at least 1500 characters, and every auth
 
 = What happened to the plugin "ProLitteris" (pro-litteris)? =
 
-It is this plugin. Up to version 1.6.4 it was only available on GitHub, installed in the folder `pro-litteris`. Version 2.0.0 is the first release on wordpress.org, with a new folder and text domain: deactivate the old plugin before activating this one. Pixels, reports and settings are kept, they are stored in the database.
+It is this plugin. Up to version 1.6.4 it was only available on GitHub, installed in the folder `pro-litteris`. Version 2.0.0 is the first release on wordpress.org, with a new folder and text domain: deactivate the old plugin before activating this one. Pixels, reports and settings are kept, they are stored in the database. If you configured it in `wp-config.php`, rename the constants: `PH_PRO_LITTERIS` to `PRO_LITTERIS_ENABLED`, `PH_PRO_LITTERIS_SYSTEM` to `PRO_LITTERIS_SYSTEM` and `PH_PRO_LITTERIS_CREDENTIALS` to `PRO_LITTERIS_CREDENTIALS`; the old names are no longer read. `PRO_LITTERIS_AUTO_MESSAGES` stays as it is.
 
 == Changelog ==
 
@@ -130,4 +130,4 @@ It is this plugin. Up to version 1.6.4 it was only available on GitHub, installe
 == Upgrade Notice ==
 
 = 2.0.0 =
-New folder and text domain: deactivate the old plugin "ProLitteris" (folder pro-litteris) before activating this one. Fixes several security issues, see the changelog.
+New folder and text domain: deactivate the old plugin "ProLitteris" first. Rename the wp-config.php constants: PH_PRO_LITTERIS to PRO_LITTERIS_ENABLED, PH_PRO_LITTERIS_SYSTEM to PRO_LITTERIS_SYSTEM, PH_PRO_LITTERIS_CREDENTIALS to PRO_LITTERIS_CREDENTIALS. Fixes security issues.

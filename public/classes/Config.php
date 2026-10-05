@@ -5,12 +5,12 @@ namespace Palasthotel\ProLitteris;
 /**
  * Connection settings: a constant in wp-config.php wins over the settings page.
  *
- * | Setting       | Constant                      | Option                       |
- * |---------------|-------------------------------|------------------------------|
- * | enabled       | PH_PRO_LITTERIS               | _pro_litteris_enabled        |
- * | API url       | PH_PRO_LITTERIS_SYSTEM        | _pro_litteris_system         |
- * | credentials   | PH_PRO_LITTERIS_CREDENTIALS   | _pro_litteris_member_id/…    |
- * | auto messages | PRO_LITTERIS_AUTO_MESSAGES    | _pro_litteris_auto_messages  |
+ * | Setting       | Constant                    | Option                       |
+ * |---------------|-----------------------------|------------------------------|
+ * | enabled       | PRO_LITTERIS_ENABLED        | _pro_litteris_enabled        |
+ * | API url       | PRO_LITTERIS_SYSTEM         | _pro_litteris_system         |
+ * | credentials   | PRO_LITTERIS_CREDENTIALS    | _pro_litteris_member_id/…    |
+ * | auto messages | PRO_LITTERIS_AUTO_MESSAGES  | _pro_litteris_auto_messages  |
  */
 class Config {
 
@@ -24,31 +24,31 @@ class Config {
 	const OPTION_AUTO_MESSAGES = "_pro_litteris_auto_messages";
 
 	public static function isEnabledByConstant(): bool {
-		return defined( 'PH_PRO_LITTERIS' );
+		return defined( 'PRO_LITTERIS_ENABLED' );
 	}
 
 	public static function isEnabled(): bool {
 		if ( self::isEnabledByConstant() ) {
-			return true === PH_PRO_LITTERIS;
+			return true === PRO_LITTERIS_ENABLED;
 		}
 
 		return (bool) get_option( self::OPTION_ENABLED, false );
 	}
 
 	public static function isSystemByConstant(): bool {
-		return defined( 'PH_PRO_LITTERIS_SYSTEM' );
+		return defined( 'PRO_LITTERIS_SYSTEM' );
 	}
 
 	public static function system(): string {
 		$system = self::isSystemByConstant()
-			? PH_PRO_LITTERIS_SYSTEM
+			? PRO_LITTERIS_SYSTEM
 			: get_option( self::OPTION_SYSTEM, self::DEFAULT_SYSTEM );
 
 		return is_string( $system ) && '' !== $system ? untrailingslashit( $system ) : self::DEFAULT_SYSTEM;
 	}
 
 	public static function areCredentialsByConstant(): bool {
-		return defined( 'PH_PRO_LITTERIS_CREDENTIALS' );
+		return defined( 'PRO_LITTERIS_CREDENTIALS' );
 	}
 
 	/**
@@ -57,7 +57,7 @@ class Config {
 	 */
 	public static function credentials(): string {
 		if ( self::areCredentialsByConstant() ) {
-			return is_string( PH_PRO_LITTERIS_CREDENTIALS ) ? PH_PRO_LITTERIS_CREDENTIALS : "";
+			return is_string( PRO_LITTERIS_CREDENTIALS ) ? PRO_LITTERIS_CREDENTIALS : "";
 		}
 		$memberId = (string) get_option( self::OPTION_MEMBER_ID, "" );
 		$username = (string) get_option( self::OPTION_USERNAME, "" );
