@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Palasthotel\ProLitteris\Model;
+namespace Palasthotel\WordPress\ProLitteris\Model;
 
 
 class Message {

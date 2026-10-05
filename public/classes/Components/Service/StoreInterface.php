@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Palasthotel\ProLitteris\Components\Service;
+namespace Palasthotel\WordPress\ProLitteris\Components\Service;
 
 /**
  * Interface StoreInterface

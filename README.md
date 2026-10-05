@@ -54,7 +54,7 @@ the post type's `publish_posts` capability.
 
 ## Hooks
 
-The names are constants of `Palasthotel\ProLitteris\Plugin`.
+The names are constants of `Palasthotel\WordPress\ProLitteris\Plugin`.
 
 | Constant | Hook | Type |
 |---|---|---|
@@ -68,7 +68,7 @@ The names are constants of `Palasthotel\ProLitteris\Plugin`.
 | `ACTION_AFTER_MESSAGE_CONTENT` | `pro_litteris_after_message_content` | action, after it |
 
 ```php
-add_filter( \Palasthotel\ProLitteris\Plugin::FILTER_POST_TYPES, fn( $types ) => [ ...$types, 'news' ] );
+add_filter( \Palasthotel\WordPress\ProLitteris\Plugin::FILTER_POST_TYPES, fn( $types ) => [ ...$types, 'news' ] );
 ```
 
 ## WP-CLI
@@ -80,9 +80,12 @@ wp pro-litteris reportContents --year=<year>
 
 ## Moving from pro-litteris
 
-Version 2.0.0 has a new folder (`integration-for-prolitteris`), main file and text domain.
-PHP namespace, class names, hooks, REST fields, options, post and user meta and the
-database tables are unchanged, so pixels, reports and project code keep working.
+Version 2.0.0 has a new folder (`integration-for-prolitteris`), main file, text domain and
+PHP namespace (`Palasthotel\WordPress\ProLitteris` instead of `Palasthotel\ProLitteris`).
+Hooks, REST fields, options, post and user meta and the database tables are unchanged,
+so pixels, reports and settings are kept. Project code that names the plugin's classes -
+e.g. `Plugin::FILTER_POST_TYPES` or `Model\PreventPixelAssign` - has to use the new
+namespace.
 
 1. Rename the constants in `wp-config.php` - the old names are no longer read, so
    without this the integration stays switched off:

@@ -1,6 +1,6 @@
 <?php
 
-namespace Palasthotel\ProLitteris\Components;
+namespace Palasthotel\WordPress\ProLitteris\Components;
 
 use ReflectionClass;
 use ReflectionException;

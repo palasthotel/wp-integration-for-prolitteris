@@ -66,7 +66,7 @@ ProLitteris only remunerates texts with at least 1500 characters, and every auth
 
 = What happened to the plugin "ProLitteris" (pro-litteris)? =
 
-It is this plugin. Up to version 1.6.4 it was only available on GitHub, installed in the folder `pro-litteris`. Version 2.0.0 is the first release on wordpress.org, with a new folder and text domain: deactivate the old plugin before activating this one. Pixels, reports and settings are kept, they are stored in the database. If you configured it in `wp-config.php`, rename the constants: `PH_PRO_LITTERIS` to `PRO_LITTERIS_ENABLED`, `PH_PRO_LITTERIS_SYSTEM` to `PRO_LITTERIS_SYSTEM` and `PH_PRO_LITTERIS_CREDENTIALS` to `PRO_LITTERIS_CREDENTIALS`; the old names are no longer read. `PRO_LITTERIS_AUTO_MESSAGES` stays as it is.
+It is this plugin. Up to version 1.6.4 it was only available on GitHub, installed in the folder `pro-litteris`. Version 2.0.0 is the first release on wordpress.org, with a new folder and text domain: deactivate the old plugin before activating this one. Pixels, reports and settings are kept, they are stored in the database. Code that uses the plugin's PHP classes has to switch from the namespace `Palasthotel\ProLitteris` to `Palasthotel\WordPress\ProLitteris`; the hook names are unchanged. If you configured it in `wp-config.php`, rename the constants: `PH_PRO_LITTERIS` to `PRO_LITTERIS_ENABLED`, `PH_PRO_LITTERIS_SYSTEM` to `PRO_LITTERIS_SYSTEM` and `PH_PRO_LITTERIS_CREDENTIALS` to `PRO_LITTERIS_CREDENTIALS`; the old names are no longer read. `PRO_LITTERIS_AUTO_MESSAGES` stays as it is.
 
 == Changelog ==
 

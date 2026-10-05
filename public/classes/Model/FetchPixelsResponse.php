@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Palasthotel\ProLitteris\Model;
+namespace Palasthotel\WordPress\ProLitteris\Model;
 
-use Palasthotel\ProLitteris\Plugin;
+use Palasthotel\WordPress\ProLitteris\Plugin;
 use WP_Error;
 
 class FetchPixelsResponse extends _BaseAPIResponse {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Palasthotel\ProLitteris\Components;
+namespace Palasthotel\WordPress\ProLitteris\Components;
 
 abstract class Database {
 

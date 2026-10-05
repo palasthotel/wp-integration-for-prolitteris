@@ -16,7 +16,7 @@
  * Domain Path: /languages
  */
 
-namespace Palasthotel\ProLitteris;
+namespace Palasthotel\WordPress\ProLitteris;
 
 // If this file is called directly, abort.
 
@@ -29,14 +29,15 @@ if (legacy_plugin_is_active() || ! load_dependencies()) {
 }
 
 /**
- * The plugin was called "ProLitteris" (pro-litteris/Plugin.php) up to 1.6.4 and declares
- * the same classes. With both active, this one stays out of the way: it loads first
- * (alphabetically), so checking for the class alone would let the old one crash.
+ * The plugin was called "ProLitteris" (pro-litteris/Plugin.php, namespace
+ * Palasthotel\ProLitteris) up to 1.6.4. Both would fetch pixels and report the same
+ * posts, so with the old one active this one stays out of the way. It loads first
+ * (alphabetically), so the old class may not exist yet: check active_plugins too.
  */
 function legacy_plugin_is_active(): bool {
     $legacy = 'pro-litteris/Plugin.php';
     if (
-        ! class_exists(__NAMESPACE__ . '\\Plugin', false)
+        ! class_exists('Palasthotel\\ProLitteris\\Plugin', false)
         && ! in_array($legacy, (array) get_option('active_plugins', []), true)
         && ! (is_multisite() && isset(get_site_option('active_sitewide_plugins', [])[$legacy]))
     ) {

@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Palasthotel\ProLitteris;
+namespace Palasthotel\WordPress\ProLitteris;
 
-use Palasthotel\ProLitteris\Components\Attachment\SelectMetaField;
-use Palasthotel\ProLitteris\Components\Service\AuthorListProvider;
+use Palasthotel\WordPress\ProLitteris\Components\Attachment\SelectMetaField;
+use Palasthotel\WordPress\ProLitteris\Components\Service\AuthorListProvider;
 
 class Media extends _Component {
 

@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Palasthotel\ProLitteris;
+namespace Palasthotel\WordPress\ProLitteris;
 
 
-use Palasthotel\ProLitteris\Model\Pixel;
+use Palasthotel\WordPress\ProLitteris\Model\Pixel;
 use WP_Error;
 
 class WP_REST extends _Component {

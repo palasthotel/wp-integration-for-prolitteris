@@ -1,6 +1,6 @@
 <?php
 
-namespace Palasthotel\ProLitteris;
+namespace Palasthotel\WordPress\ProLitteris;
 
 /**
  * Connection settings: a constant in wp-config.php wins over the settings page.

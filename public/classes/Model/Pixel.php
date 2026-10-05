@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Palasthotel\ProLitteris\Model;
+namespace Palasthotel\WordPress\ProLitteris\Model;
 
 
-use Palasthotel\ProLitteris\Plugin;
+use Palasthotel\WordPress\ProLitteris\Plugin;
 
 class Pixel {
 

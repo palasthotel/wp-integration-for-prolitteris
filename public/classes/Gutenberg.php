@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Palasthotel\ProLitteris;
+namespace Palasthotel\WordPress\ProLitteris;
 
 
 class Gutenberg extends _Component {

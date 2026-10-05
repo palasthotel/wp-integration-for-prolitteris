@@ -1,6 +1,6 @@
 <?php
 
-namespace Palasthotel\ProLitteris;
+namespace Palasthotel\WordPress\ProLitteris;
 
 abstract class _Component {
 

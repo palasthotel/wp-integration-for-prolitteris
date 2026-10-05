@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Palasthotel\ProLitteris\Components\Service;
+namespace Palasthotel\WordPress\ProLitteris\Components\Service;
 
 
-use Palasthotel\ProLitteris\Components\Model\Option;
-use Palasthotel\ProLitteris\Plugin;
+use Palasthotel\WordPress\ProLitteris\Components\Model\Option;
+use Palasthotel\WordPress\ProLitteris\Plugin;
 use WP_User;
 
 class AuthorListProvider implements ProviderInterface {

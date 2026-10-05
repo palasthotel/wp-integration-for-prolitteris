@@ -1,9 +1,9 @@
 <?php
 
-namespace Palasthotel\ProLitteris;
+namespace Palasthotel\WordPress\ProLitteris;
 
 use Html2Text\Html2Text;
-use Palasthotel\ProLitteris\Model\Pixel;
+use Palasthotel\WordPress\ProLitteris\Model\Pixel;
 use WP_Error;
 
 /**

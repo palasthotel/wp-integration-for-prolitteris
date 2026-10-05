@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Palasthotel\ProLitteris;
+namespace Palasthotel\WordPress\ProLitteris;
 
-use Palasthotel\ProLitteris\Model\Pixel;
-use Palasthotel\ProLitteris\Model\PreventPixelAssign;
+use Palasthotel\WordPress\ProLitteris\Model\Pixel;
+use Palasthotel\WordPress\ProLitteris\Model\PreventPixelAssign;
 use WP_Error;
 
 class Repository extends _Component {

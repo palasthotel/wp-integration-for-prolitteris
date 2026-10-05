@@ -1,9 +1,9 @@
 <?php
 
-namespace Palasthotel\ProLitteris;
+namespace Palasthotel\WordPress\ProLitteris;
 
-use Palasthotel\ProLitteris\Model\FetchPixelsResponse;
-use Palasthotel\ProLitteris\Model\PushMessageResponse;
+use Palasthotel\WordPress\ProLitteris\Model\FetchPixelsResponse;
+use Palasthotel\WordPress\ProLitteris\Model\PushMessageResponse;
 use WP_Error;
 
 class API {

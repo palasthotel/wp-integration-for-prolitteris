@@ -1,6 +1,6 @@
 <?php
 
-namespace Palasthotel\ProLitteris;
+namespace Palasthotel\WordPress\ProLitteris;
 
 /**
  * Settings → ProLitteris. A setting defined as constant in wp-config.php is shown

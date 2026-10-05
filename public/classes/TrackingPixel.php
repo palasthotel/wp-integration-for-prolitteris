@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Palasthotel\ProLitteris;
+namespace Palasthotel\WordPress\ProLitteris;
 
 
-use Palasthotel\ProLitteris\Model\Pixel;
+use Palasthotel\WordPress\ProLitteris\Model\Pixel;
 
 /**
  * @property Plugin plugin

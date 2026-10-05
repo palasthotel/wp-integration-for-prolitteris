@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Palasthotel\ProLitteris\Components\Model;
+namespace Palasthotel\WordPress\ProLitteris\Components\Model;
 
 
 /**
