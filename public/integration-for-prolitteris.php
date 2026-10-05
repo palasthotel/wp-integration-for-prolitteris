@@ -4,7 +4,7 @@
  * Plugin Name: Integration for ProLitteris
  * Plugin URI: https://github.com/palasthotel/wp-integration-for-prolitteris
  * Description: Adds the ProLitteris tracking pixel to posts and reports texts to ProLitteris ("Onlinewerke entschädigen").
- * Version: 1.6.4
+ * Version: 2.0.0
  * Requires at least: 6.6
  * Tested up to: 7.1
  * Requires PHP: 8.2
