@@ -6,12 +6,14 @@ namespace Palasthotel\ProLitteris\Model;
 
 use Palasthotel\ProLitteris\Plugin;
 
-/**
- * @property string domain
- * @property string uid
- * @property int|null post_id
- */
 class Pixel {
+
+	public string $domain;
+	public string $uid;
+	/**
+	 * @var int|string|null
+	 */
+	public $post_id;
 
 	/**
 	 * Pixel constructor.
