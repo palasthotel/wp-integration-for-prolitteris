@@ -52,45 +52,12 @@ function legacy_plugin_is_active(): bool {
 }
 
 /**
- * Loads the bundled composer autoloader, unless the Palasthotel central autoloader
- * already manages exactly this copy of the plugin.
+ * Loads the bundled composer dependencies (html2text).
  */
 function load_dependencies(): bool {
-    $package = 'palasthotel/integration-for-prolitteris'; // the name in public/composer.json
-
-    $central = (defined('PALASTHOTEL_COMPOSER_CENTRAL') && constant('PALASTHOTEL_COMPOSER_CENTRAL'))
-        || did_action('palasthotel/central_autoloader_loaded') > 0;
-
-    $managed     = false;
-    $installPath = null;
-    if ($central && class_exists('\\Composer\\InstalledVersions', true)) {
-        try {
-            // isInstalled() only says some version is, so compare the directory
-            if (\Composer\InstalledVersions::isInstalled($package)) {
-                $installPath = \Composer\InstalledVersions::getInstallPath($package);
-                $managed     = $installPath && realpath($installPath) && realpath($installPath) === realpath(__DIR__);
-            }
-        } catch (\Throwable $e) {
-            if (defined('WP_DEBUG') && WP_DEBUG) {
-                error_log('[ProLitteris] InstalledVersions exception: ' . $e->getMessage());
-            }
-        }
-    }
-
-    if (defined('PH_CENTRAL_AUTOLOADER_DEBUG') && PH_CENTRAL_AUTOLOADER_DEBUG) {
-        error_log('[ProLitteris] centralAutoloader=' . ($central ? '1' : '0')
-            . ' classExists=' . (class_exists('\\Composer\\InstalledVersions', false) ? '1' : '0')
-            . ' installPath=' . ($installPath ?? '(none)')
-            . ' managed=' . ($managed ? '1' : '0'));
-    }
-
-    if ($central && $managed) {
-        return true;
-    }
-
-    $local = __DIR__ . '/vendor/autoload.php';
-    if (is_readable($local)) {
-        require_once $local;
+    $autoload = __DIR__ . '/vendor/autoload.php';
+    if (is_readable($autoload)) {
+        require_once $autoload;
         return true;
     }
 
