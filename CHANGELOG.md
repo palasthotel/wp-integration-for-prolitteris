@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.1](https://github.com/palasthotel/wp-integration-for-prolitteris/compare/v2.0.0...v2.0.1) (2026-10-05)
+
+
+### Bug Fixes
+
+* declare Tested up to only in readme.txt ([d86c8b5](https://github.com/palasthotel/wp-integration-for-prolitteris/commit/d86c8b51efaf15ae65441dce678af8173f37e246))
+* declare Tested up to only in readme.txt ([bf68c6e](https://github.com/palasthotel/wp-integration-for-prolitteris/commit/bf68c6e46bc1badd871975c1eb8a0e5bed060798))
+
 ## [2.0.0](https://github.com/palasthotel/wp-integration-for-prolitteris/compare/v1.6.4...v2.0.0) (2026-10-05)
 
 
