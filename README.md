@@ -27,9 +27,9 @@ Settings → ProLitteris, or constants in `wp-config.php`, which win over the se
 
 | Constant | Setting | |
 |---|---|---|
-| `PH_PRO_LITTERIS` | Enabled | `true` to use the integration |
-| `PH_PRO_LITTERIS_SYSTEM` | API URL | default `https://owen.prolitteris.ch` |
-| `PH_PRO_LITTERIS_CREDENTIALS` | Member number, username, password | `"member number:username:password"`, sent base64-encoded as `Authorization: OWEN …` |
+| `PRO_LITTERIS_ENABLED` | Enabled | `true` to use the integration |
+| `PRO_LITTERIS_SYSTEM` | API URL | default `https://owen.prolitteris.ch` |
+| `PRO_LITTERIS_CREDENTIALS` | Member number, username, password | `"member number:username:password"`, sent base64-encoded as `Authorization: OWEN …` |
 | `PRO_LITTERIS_AUTO_MESSAGES` | Automatic reporting | `true` to report hourly |
 
 Nothing is requested from ProLitteris before the integration is enabled and has credentials.
@@ -84,10 +84,20 @@ Version 2.0.0 has a new folder (`integration-for-prolitteris`), main file and te
 PHP namespace, class names, hooks, REST fields, options, post and user meta and the
 database tables are unchanged, so pixels, reports and project code keep working.
 
-1. Install the new plugin.
-2. Deactivate "ProLitteris", then activate "Integration for ProLitteris". As long as the
+1. Rename the constants in `wp-config.php` - the old names are no longer read, so
+   without this the integration stays switched off:
+
+   | up to 1.6.4 | from 2.0.0 |
+   |---|---|
+   | `PH_PRO_LITTERIS` | `PRO_LITTERIS_ENABLED` |
+   | `PH_PRO_LITTERIS_SYSTEM` | `PRO_LITTERIS_SYSTEM` |
+   | `PH_PRO_LITTERIS_CREDENTIALS` | `PRO_LITTERIS_CREDENTIALS` |
+   | `PRO_LITTERIS_AUTO_MESSAGES` | unchanged |
+
+2. Install the new plugin.
+3. Deactivate "ProLitteris", then activate "Integration for ProLitteris". As long as the
    old one is active, the new one does not load and says so in wp-admin.
-3. Delete the old plugin.
+4. Delete the old plugin.
 
 ## Repository layout
 
