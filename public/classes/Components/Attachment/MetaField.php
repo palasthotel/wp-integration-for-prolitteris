@@ -50,6 +50,8 @@ abstract class MetaField {
 		return "attachments[{$post_id}][{$this->id}]";
 	}
 
+	// runs on edit_attachment, after core verified the nonce of the media form
+	// phpcs:disable WordPress.Security.NonceVerification.Missing
 	protected function getRequestValue( $post_id ) {
 		if (
 			! isset( $_POST["attachments"] ) ||
@@ -59,8 +61,9 @@ abstract class MetaField {
 			return null;
 		}
 
-		return $_POST["attachments"][ $post_id ][ $this->id ];
+		return sanitize_text_field( wp_unslash( $_POST["attachments"][ $post_id ][ $this->id ] ) );
 	}
+	// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 	public function label( string $value ): self {
 		$this->label = $value;

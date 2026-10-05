@@ -37,6 +37,8 @@ class AuthorListProvider implements ProviderInterface {
 				 * @var WP_User $author
 				 */
 				$id = "";
+				$name = "";
+				$surName = "";
 				foreach ($results as $result){
 					if($result->meta_key === $keyId && $result->user_id === $author->ID.""){
 						$id = $result->meta_value;
@@ -45,11 +47,11 @@ class AuthorListProvider implements ProviderInterface {
 						$surName = $result->meta_value;
 					}
 					if($result->meta_key === $keyName && $result->user_id === $author->ID.""){
-						$surName = $result->meta_value;
+						$name = $result->meta_value;
 					}
 				}
 
-				$displayName = ( ! empty( $surName ) && ! empty( $name ) ) ? "$surName $name" : $author->display_name;
+				$displayName = ( ! empty( $surName ) && ! empty( $name ) ) ? "$name $surName" : $author->display_name;
 
 				return Option::build( $author->ID, "{$displayName} ($id)" );
 			}, $authors );

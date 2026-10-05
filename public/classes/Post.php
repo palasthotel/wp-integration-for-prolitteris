@@ -131,7 +131,9 @@ class Post extends _Component {
 			);
 		}
 
-		$title = get_the_title( $post_id );
+		// not get_the_title(): it prefixes password-protected and private posts
+		// with "Protected:"/"Private:", which then ended up in the report
+		$title = wp_strip_all_tags( get_post_field( 'post_title', $post_id ) );
 		$text  = $this->getPostText( $post_id );
 
 		return MessageUtils::buildMessage(

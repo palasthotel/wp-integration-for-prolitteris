@@ -40,12 +40,12 @@ class User extends _Component {
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="<?php echo $keyId; ?>">Member ID</label></th>
+					<label for="<?php echo esc_attr( $keyId ); ?>"><?php esc_html_e( 'Member ID', 'integration-for-pro-litteris' ); ?></label></th>
 				<td>
 					<input
 						type="text"
-						name="<?php echo $keyId; ?>"
-						id="<?php echo $keyId; ?>"
+						name="<?php echo esc_attr( $keyId ); ?>"
+						id="<?php echo esc_attr( $keyId ); ?>"
 						value="<?php echo esc_attr( $this->getProLitterisId($user->ID)); ?>"
 						class="regular-text"
 					/>
@@ -53,30 +53,30 @@ class User extends _Component {
 			</tr>
 			<tr>
 				<th>
-					<label for="<?php echo $keyName; ?>">Vorname</label></th>
+					<label for="<?php echo esc_attr( $keyName ); ?>"><?php esc_html_e( 'First name', 'integration-for-pro-litteris' ); ?></label></th>
 				<td>
 					<input
 						type="text"
-						name="<?php echo $keyName; ?>"
-						id="<?php echo $keyName; ?>"
+						name="<?php echo esc_attr( $keyName ); ?>"
+						id="<?php echo esc_attr( $keyName ); ?>"
 						value="<?php echo esc_attr( $this->getProLitterisName($user->ID)); ?>"
 						class="regular-text"
 					/>
-					<p class="description">Der Vorname muss mit dem bei ProLitteris hinterlegten Vorname übereinstimmen.</p>
+					<p class="description"><?php esc_html_e( 'Has to match the first name stored at ProLitteris.', 'integration-for-pro-litteris' ); ?></p>
 				</td>
 			</tr>
 			<tr>
 				<th>
-					<label for="<?php echo $keySurname; ?>">Nachname</label></th>
+					<label for="<?php echo esc_attr( $keySurname ); ?>"><?php esc_html_e( 'Last name', 'integration-for-pro-litteris' ); ?></label></th>
 				<td>
 					<input
 						type="text"
-						name="<?php echo $keySurname; ?>"
-						id="<?php echo $keySurname; ?>"
+						name="<?php echo esc_attr( $keySurname ); ?>"
+						id="<?php echo esc_attr( $keySurname ); ?>"
 						value="<?php echo esc_attr( $this->getProLitterisSurname($user->ID)); ?>"
 						class="regular-text"
 					/>
-					<p class="description">Der Nachname muss mit dem bei ProLitteris hinterlegten Nachname übereinstimmen.</p>
+					<p class="description"><?php esc_html_e( 'Has to match the last name stored at ProLitteris.', 'integration-for-pro-litteris' ); ?></p>
 				</td>
 			</tr>
 		</table>
@@ -85,6 +85,8 @@ class User extends _Component {
 
 	public function save($user_id){
 
+		// core verifies the nonce of the profile form before these hooks run
+		// phpcs:disable WordPress.Security.NonceVerification.Missing
 		if ( !current_user_can( 'edit_user', $user_id ) )
 			return;
 
@@ -95,16 +97,17 @@ class User extends _Component {
 		}
 
 		if(isset($_POST[Plugin::USER_META_PRO_LITTERIS_NAME]) && !empty($_POST[Plugin::USER_META_PRO_LITTERIS_NAME])){
-			update_user_meta( $user_id, Plugin::USER_META_PRO_LITTERIS_NAME, sanitize_text_field($_POST[Plugin::USER_META_PRO_LITTERIS_NAME]) );
+			update_user_meta( $user_id, Plugin::USER_META_PRO_LITTERIS_NAME, sanitize_text_field(wp_unslash($_POST[Plugin::USER_META_PRO_LITTERIS_NAME])) );
 		} else {
 			delete_user_meta( $user_id, Plugin::USER_META_PRO_LITTERIS_NAME);
 		}
 
 		if(isset($_POST[Plugin::USER_META_PRO_LITTERIS_SURNAME]) && !empty($_POST[Plugin::USER_META_PRO_LITTERIS_SURNAME])){
-			update_user_meta( $user_id, Plugin::USER_META_PRO_LITTERIS_SURNAME, sanitize_text_field($_POST[Plugin::USER_META_PRO_LITTERIS_SURNAME]) );
+			update_user_meta( $user_id, Plugin::USER_META_PRO_LITTERIS_SURNAME, sanitize_text_field(wp_unslash($_POST[Plugin::USER_META_PRO_LITTERIS_SURNAME])) );
 		} else {
 			delete_user_meta( $user_id, Plugin::USER_META_PRO_LITTERIS_SURNAME);
 		}
+		// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 	}
 

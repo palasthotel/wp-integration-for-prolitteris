@@ -45,24 +45,31 @@ class PostsTable extends _Component {
 			$pixel = $this->plugin->repository->getPostPixel($post_id, true);
 
 			if( $pixel instanceof \WP_Error ){
-				$error = esc_attr( $pixel->get_error_message() );
-				echo "<span title='$error' style='cursor: help;'>🔴</span>";
+				$this->status( '🔴', $pixel->get_error_message() );
 				return;
 			} else if($pixel instanceof Pixel){
 
 				if(!$this->plugin->post->canBeReported($post_id)){
-					echo "<span title='Kann nicht gemeldet werden, weil der Text unter ".Options::getMinCharCount()." Zeichen hat.' style='cursor: help;'>⚪️</span>";
+					$this->status( '⚪️', sprintf(
+						/* translators: %d: minimum number of characters */
+						__( 'Cannot be reported, the text has less than %d characters.', 'integration-for-pro-litteris' ),
+						Options::getMinCharCount()
+					) );
 					return;
 				} else if($this->plugin->database->isMessageReported($pixel->uid)){
-					echo "<span title='Inhalt wurde bei ProLitteris gemeldet' style='cursor: help;'>✅</span>";
+					$this->status( '✅', __( 'Reported to ProLitteris', 'integration-for-pro-litteris' ) );
 					return;
 				} else {
-					echo "<span title='Inhalt ist bereit für die Meldung bei ProLitteris' style='cursor: help;'>🔶</span>";
+					$this->status( '🔶', __( 'Ready to be reported to ProLitteris', 'integration-for-pro-litteris' ) );
 					return;
 				}
 			}
 
-			echo "<span title='Noch kein Zählpixel bei ProLitteris abgeholt' style='cursor: help;'>🔵</span>";
+			$this->status( '🔵', __( 'No counting pixel fetched from ProLitteris yet', 'integration-for-pro-litteris' ) );
 		}
+	}
+
+	private function status( string $icon, string $title ) {
+		printf( '<span title="%1$s" style="cursor: help;">%2$s</span>', esc_attr( $title ), esc_html( $icon ) );
 	}
 }
