@@ -1,0 +1,47 @@
+---
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    assignees:
+      - "JanaME"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    directory: "/"
+    open-pull-requests-limit: 10
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "07:00"
+      timezone: "Europe/Berlin"
+
+  # html2text ships with the plugin, so its updates are real updates for users
+  - package-ecosystem: "composer"
+    assignees:
+      - "JanaME"
+    commit-message:
+      prefix: "fix"
+      include: "scope"
+    directory: "/public"
+    open-pull-requests-limit: 5
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "07:00"
+      timezone: "Europe/Berlin"
+
+  # Has to be "/" - that is what makes Dependabot read .github/workflows/.
+  - package-ecosystem: "github-actions"
+    assignees:
+      - "JanaME"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    directory: "/"
+    open-pull-requests-limit: 10
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "07:00"
+      timezone: "Europe/Berlin"
