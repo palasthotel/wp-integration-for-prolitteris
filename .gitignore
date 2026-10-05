@@ -1,2 +1,9 @@
 *.DS_Store
 /node_modules
+# compiled editor assets - built by the pipeline, never committed
+/public/dist
+# composer dependencies - the pack installs them without dev dependencies
+/public/vendor
+# pack staging directory
+/build
+*.zip
