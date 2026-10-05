@@ -22,7 +22,8 @@ class Database extends Components\Database {
 	 * @return int
 	 */
 	public function countAvailablePixels() {
-		return intval($this->wpdb->get_var("SELECT count(uid) FROM $this->table WHERE post_id IS NULL"));
+		$wpdb = $this->wpdb;
+		return intval($wpdb->get_var($wpdb->prepare("SELECT count(uid) FROM %i WHERE post_id IS NULL", $this->table)));
 	}
 
 	/**
@@ -32,7 +33,8 @@ class Database extends Components\Database {
 	 * @return bool|int
 	 */
 	public function add(Pixel $pixel){
-		return $this->wpdb->insert(
+		$wpdb = $this->wpdb;
+		return $wpdb->insert(
 			$this->table,
 			[
 				"uid" => $pixel->uid,
@@ -50,8 +52,9 @@ class Database extends Components\Database {
 	 * @return Pixel|null
 	 */
 	public function getPixel( $post_id ){
-		$row = $this->wpdb->get_row(
-			$this->wpdb->prepare("SELECT uid, uid_domain, post_id from $this->table WHERE post_id = %d", $post_id)
+		$wpdb = $this->wpdb;
+		$row = $wpdb->get_row(
+			$wpdb->prepare("SELECT uid, uid_domain, post_id from %i WHERE post_id = %d", $this->table, $post_id)
 		);
 		if(!is_object($row) || !isset($row->uid)) return null;
 
@@ -64,9 +67,10 @@ class Database extends Components\Database {
 	 * @return bool|int
 	 */
 	public function assignPixel($post_id){
-		return $this->wpdb->query($this->wpdb->prepare("UPDATE $this->table SET post_id = %d WHERE uid IN (
-			SELECT * FROM (SELECT uid FROM $this->table WHERE post_id IS NULL LIMIT 1) as tmp
-		)", $post_id));
+		$wpdb = $this->wpdb;
+		return $wpdb->query($wpdb->prepare("UPDATE %i SET post_id = %d WHERE uid IN (
+			SELECT * FROM (SELECT uid FROM %i WHERE post_id IS NULL LIMIT 1) as tmp
+		)", $this->table, $post_id, $this->table));
 	}
 
 	/**
@@ -84,7 +88,8 @@ class Database extends Components\Database {
 	 * @return bool|int
 	 */
 	public function deleteForPost($post_id){
-		return $this->wpdb->delete(
+		$wpdb = $this->wpdb;
+		return $wpdb->delete(
 			$this->table,
 			[
 				"post_id" => $post_id,
@@ -100,8 +105,9 @@ class Database extends Components\Database {
 	 *
 	 * @return bool|int
 	 */
-	public function saveMessage(Message $message, $user_id = null, string $response = null){
-		return $this->wpdb->replace(
+	public function saveMessage(Message $message, $user_id = null, ?string $response = null){
+		$wpdb = $this->wpdb;
+		return $wpdb->replace(
 			$this->tableMessages,
 			[
 				"pixel_uid" => $message->pixelUid,
@@ -121,8 +127,9 @@ class Database extends Components\Database {
 	 * @return bool
 	 */
 	public function isMessageReported($pixelUid){
-		return intval($this->wpdb->get_var(
-			$this->wpdb->prepare("SELECT count(pixel_uid) FROM $this->tableMessages WHERE pixel_uid = %s AND reported IS NOT null", $pixelUid)
+		$wpdb = $this->wpdb;
+		return intval($wpdb->get_var(
+			$wpdb->prepare("SELECT count(pixel_uid) FROM %i WHERE pixel_uid = %s AND reported IS NOT null", $this->tableMessages, $pixelUid)
 		)) > 0;
 	}
 
@@ -132,8 +139,9 @@ class Database extends Components\Database {
 	 * @return false|Message
 	 */
 	public function getMessage($pixelUid){
-		$row = $this->wpdb->get_row(
-			$this->wpdb->prepare("SELECT * FROM $this->tableMessages WHERE pixel_uid = %s", $pixelUid)
+		$wpdb = $this->wpdb;
+		$row = $wpdb->get_row(
+			$wpdb->prepare("SELECT * FROM %i WHERE pixel_uid = %s", $this->tableMessages, $pixelUid)
 		);
 		if(!isset($row->pixel_uid)){
 			return false;
@@ -155,24 +163,35 @@ class Database extends Components\Database {
 	 * @return array
 	 */
 	public function getPostIdsReadyForMessage($year = -1){
-		$yearCond = "";
-		if($year > 0){
-			$yearCond = " AND YEAR(post_date) = ".intval($year);
-		}
-		return $this->wpdb->get_col( 'SELECT p.ID from '.$this->wpdb->posts.' as p
-			LEFT JOIN '.$this->wpdb->usermeta.' as u ON ( p.post_author = u.user_id AND u.meta_key = "'.Plugin::USER_META_PRO_LITTERIS_ID.'" )
+		$wpdb = $this->wpdb;
+		$year = max( 0, intval( $year ) );
+
+		return $wpdb->get_col( $wpdb->prepare(
+			'SELECT p.ID from %i as p
+			LEFT JOIN %i as u ON ( p.post_author = u.user_id AND u.meta_key = %s )
 			WHERE
 			p.ID IN (
-				SELECT post_id from '.$this->table.' as pool WHERE uid NOT IN (
-					SELECT pixel_uid FROM '.$this->tableMessages.'
+				SELECT post_id from %i as pool WHERE uid NOT IN (
+					SELECT pixel_uid FROM %i
 				) AND post_id IS NOT NULL
 			)
 			AND
 			p.ID NOT IN (
-				SELECT post_id FROM '.$this->wpdb->postmeta.' WHERE meta_key = "'.Plugin::POST_META_PUSH_MESSAGE_ERROR.'"
+				SELECT post_id FROM %i WHERE meta_key = %s
 			)
 			AND p.post_status IN ( "publish", "private" )
-			AND u.meta_value IS NOT NULL '.$yearCond);
+			AND u.meta_value IS NOT NULL
+			AND ( %d = 0 OR YEAR(p.post_date) = %d )',
+			$wpdb->posts,
+			$wpdb->usermeta,
+			Plugin::USER_META_PRO_LITTERIS_ID,
+			$this->table,
+			$this->tableMessages,
+			$wpdb->postmeta,
+			Plugin::POST_META_PUSH_MESSAGE_ERROR,
+			$year,
+			$year
+		) );
 	}
 
 	/**
@@ -185,7 +204,8 @@ class Database extends Components\Database {
 	 * @return bool|int
 	 */
 	public function addAPIResponse(string $response, string $message = "", $pixelUID = null){
-		return $this->wpdb->insert(
+		$wpdb = $this->wpdb;
+		return $wpdb->insert(
 			$this->tableResponses,
 			[
 				"response" => $response,
