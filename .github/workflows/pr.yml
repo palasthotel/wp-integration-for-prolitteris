@@ -12,7 +12,7 @@ jobs:
   checks:
     uses: palasthotel/github-workflows/.github/workflows/wp-plugin-pr.yml@v1
     with:
-      slug: integration-for-pro-litteris
+      slug: integration-for-prolitteris
       dev-plugin-name: Integration for ProLitteris - DEV
       # Requires PHP: 8.2
       php-versions: '["8.2", "8.3", "8.4"]'
@@ -26,6 +26,6 @@ jobs:
         dist/gutenberg.js
         dist/gutenberg.asset.php
         cli/wp-cli.php
-        languages/integration-for-pro-litteris.pot
-        languages/integration-for-pro-litteris-de_CH.mo
-        languages/integration-for-pro-litteris-de_DE.mo
+        languages/integration-for-prolitteris.pot
+        languages/integration-for-prolitteris-de_CH.mo
+        languages/integration-for-prolitteris-de_DE.mo

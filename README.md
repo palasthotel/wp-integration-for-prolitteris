@@ -5,7 +5,7 @@ of [ProLitteris](https://prolitteris.ch), the Swiss collective rights management
 Until 1.6.4 the plugin was called "ProLitteris" (`pro-litteris`); see
 [Moving from pro-litteris](#moving-from-pro-litteris).
 
-On WordPress.org: [integration-for-pro-litteris](https://wordpress.org/plugins/integration-for-pro-litteris/) (from 2.0.0).
+On WordPress.org: [integration-for-prolitteris](https://wordpress.org/plugins/integration-for-prolitteris/) (from 2.0.0).
 
 ## What it does
 
@@ -80,7 +80,7 @@ wp pro-litteris reportContents --year=<year>
 
 ## Moving from pro-litteris
 
-Version 2.0.0 has a new folder (`integration-for-pro-litteris`), main file and text domain.
+Version 2.0.0 has a new folder (`integration-for-prolitteris`), main file and text domain.
 PHP namespace, class names, hooks, REST fields, options, post and user meta and the
 database tables are unchanged, so pixels, reports and project code keep working.
 
@@ -95,7 +95,7 @@ database tables are unchanged, so pixels, reports and project code keep working.
 
 | Path | Description |
 |---|---|
-| `public/integration-for-pro-litteris.php` | plugin header and bootstrap |
+| `public/integration-for-prolitteris.php` | plugin header and bootstrap |
 | `public/classes/` | the plugin's PHP |
 | `public/cli/` | WP-CLI commands |
 | `public/languages/` | translations |
@@ -103,7 +103,7 @@ database tables are unchanged, so pixels, reports and project code keep working.
 | `public/vendor/` | composer dependencies (html2text) - **generated**, not in the repository |
 | `public/composer.json`, `public/composer.lock` | what `public/vendor/` is installed from |
 | `src/` | editor sidebar JavaScript source |
-| `integration-for-pro-litteris.php` | DEV wrapper, loads `public/` when the repository is checked out into `wp-content/plugins/` |
+| `integration-for-prolitteris.php` | DEV wrapper, loads `public/` when the repository is checked out into `wp-content/plugins/` |
 | `.github/workflows/` | CI/CD, calling the shared workflows - see [.github/WORKFLOWS.md](.github/WORKFLOWS.md) |
 
 ## Development
@@ -113,7 +113,7 @@ npm ci
 npm run build                                   # → public/dist/
 (cd public && composer install)                 # → public/vendor/
 npx wp-env start                                # http://localhost:8888, admin / password
-npm run pack                                    # → build/integration-for-pro-litteris/ and the zip
+npm run pack                                    # → build/integration-for-prolitteris/ and the zip
 ```
 
 `npm run pack` runs the shared `pack.sh` from

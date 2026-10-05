@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: Integration for ProLitteris
- * Plugin URI: https://github.com/palasthotel/wp-integration-for-pro-litteris
+ * Plugin URI: https://github.com/palasthotel/wp-integration-for-prolitteris
  * Description: Adds the ProLitteris tracking pixel to posts and reports texts to ProLitteris ("Onlinewerke entschädigen").
  * Version: 1.6.4
  * Requires at least: 6.6
@@ -12,7 +12,7 @@
  * Author URI: https://palasthotel.de
  * License: GPL-3.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain: integration-for-pro-litteris
+ * Text Domain: integration-for-prolitteris
  * Domain Path: /languages
  */
 
@@ -44,7 +44,7 @@ function legacy_plugin_is_active(): bool {
     }
     add_action('admin_notices', function () {
         echo '<div class="notice notice-error"><p>'
-            . esc_html__('Integration for ProLitteris is not loaded because the old plugin "ProLitteris" is still active. Deactivate "ProLitteris" - pixels, reports and settings are kept.', 'integration-for-pro-litteris')
+            . esc_html__('Integration for ProLitteris is not loaded because the old plugin "ProLitteris" is still active. Deactivate "ProLitteris" - pixels, reports and settings are kept.', 'integration-for-prolitteris')
             . '</p></div>';
     });
 
@@ -56,7 +56,7 @@ function legacy_plugin_is_active(): bool {
  * already manages exactly this copy of the plugin.
  */
 function load_dependencies(): bool {
-    $package = 'palasthotel/integration-for-pro-litteris'; // the name in public/composer.json
+    $package = 'palasthotel/integration-for-prolitteris'; // the name in public/composer.json
 
     $central = (defined('PALASTHOTEL_COMPOSER_CENTRAL') && constant('PALASTHOTEL_COMPOSER_CENTRAL'))
         || did_action('palasthotel/central_autoloader_loaded') > 0;
@@ -96,7 +96,7 @@ function load_dependencies(): bool {
 
     add_action('admin_notices', function () {
         echo '<div class="notice notice-error"><p>'
-            . esc_html__('Integration for ProLitteris: dependencies are missing, run "composer install" in the plugin folder.', 'integration-for-pro-litteris')
+            . esc_html__('Integration for ProLitteris: dependencies are missing, run "composer install" in the plugin folder.', 'integration-for-prolitteris')
             . '</p></div>';
     });
 
@@ -124,7 +124,7 @@ class Plugin extends Components\Plugin {
 	/**
 	 * Domain for translation
 	 */
-	const DOMAIN = "integration-for-pro-litteris";
+	const DOMAIN = "integration-for-prolitteris";
 
 	/**
 	 * ids

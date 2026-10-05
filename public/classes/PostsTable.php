@@ -52,20 +52,20 @@ class PostsTable extends _Component {
 				if(!$this->plugin->post->canBeReported($post_id)){
 					$this->status( '⚪️', sprintf(
 						/* translators: %d: minimum number of characters */
-						__( 'Cannot be reported, the text has less than %d characters.', 'integration-for-pro-litteris' ),
+						__( 'Cannot be reported, the text has less than %d characters.', 'integration-for-prolitteris' ),
 						Options::getMinCharCount()
 					) );
 					return;
 				} else if($this->plugin->database->isMessageReported($pixel->uid)){
-					$this->status( '✅', __( 'Reported to ProLitteris', 'integration-for-pro-litteris' ) );
+					$this->status( '✅', __( 'Reported to ProLitteris', 'integration-for-prolitteris' ) );
 					return;
 				} else {
-					$this->status( '🔶', __( 'Ready to be reported to ProLitteris', 'integration-for-pro-litteris' ) );
+					$this->status( '🔶', __( 'Ready to be reported to ProLitteris', 'integration-for-prolitteris' ) );
 					return;
 				}
 			}
 
-			$this->status( '🔵', __( 'No counting pixel fetched from ProLitteris yet', 'integration-for-pro-litteris' ) );
+			$this->status( '🔵', __( 'No counting pixel fetched from ProLitteris yet', 'integration-for-prolitteris' ) );
 		}
 	}
 

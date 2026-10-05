@@ -20,7 +20,7 @@ class DashboardWidget extends _Component {
 		}
 		wp_add_dashboard_widget(
 			Plugin::DASHBOARD_WIDGET_ID,
-			__("Pro Litteris", 'integration-for-pro-litteris'),
+			__("Pro Litteris", 'integration-for-prolitteris'),
 			[$this, 'widget'],
 			[$this, 'config']
 		);
@@ -31,9 +31,9 @@ class DashboardWidget extends _Component {
 		if ( ! Config::isEnabled() || ! Config::hasConnection() ) {
 			printf(
 				'<p>%1$s <a href="%2$s">%3$s</a></p>',
-				esc_html__( "The integration is not set up yet.", 'integration-for-pro-litteris' ),
+				esc_html__( "The integration is not set up yet.", 'integration-for-prolitteris' ),
 				esc_url( admin_url( 'options-general.php?page=' . Settings::PAGE ) ),
-				esc_html__( 'Settings → ProLitteris', 'integration-for-pro-litteris' )
+				esc_html__( 'Settings → ProLitteris', 'integration-for-prolitteris' )
 			);
 			return;
 		}
@@ -45,7 +45,7 @@ class DashboardWidget extends _Component {
 		if($this->plugin->repository->isAutoMessagesEnabled()){
 			$postIds = $this->plugin->repository->database->getPostIdsReadyForMessage();
 			if(count($postIds) > 0 ){
-				printf("<p>%s</p>", esc_html__("Posts will be reported on next cron schedule:", 'integration-for-pro-litteris'));
+				printf("<p>%s</p>", esc_html__("Posts will be reported on next cron schedule:", 'integration-for-prolitteris'));
 				echo "<ul>";
 				foreach ($postIds as $i =>  $postId){
 					printf("<li><a href='%s'>%s</a></li>", esc_url( get_edit_post_link($postId) ), esc_html( get_the_title($postId) ));
@@ -56,7 +56,7 @@ class DashboardWidget extends _Component {
 				}
 				echo "</ul>";
 			} else {
-				printf("<p>%s</p>", esc_html__("All posts in question are reported.", 'integration-for-pro-litteris'));
+				printf("<p>%s</p>", esc_html__("All posts in question are reported.", 'integration-for-prolitteris'));
 			}
 
 			echo "<hr />";
@@ -69,7 +69,7 @@ class DashboardWidget extends _Component {
 			"<p>%s</p>",
 			esc_html( sprintf(
 				/* translators: 1: available pixels, 2: aspired pool size */
-				__( '%1$d/%2$d pixels available in pool.', 'integration-for-pro-litteris' ),
+				__( '%1$d/%2$d pixels available in pool.', 'integration-for-prolitteris' ),
 				$size,
 				$aspired
 			) )
@@ -77,7 +77,7 @@ class DashboardWidget extends _Component {
 
 		printf(
 			"<p class='description'>%s</p>",
-			esc_html__("The pixel pool is filled up every hour. If you need new pixels immediately, you can manually request new ones here.", 'integration-for-pro-litteris')
+			esc_html__("The pixel pool is filled up every hour. If you need new pixels immediately, you can manually request new ones here.", 'integration-for-prolitteris')
 		);
 
 		$needPixels = $size < $aspired;
@@ -88,7 +88,7 @@ class DashboardWidget extends _Component {
 		echo "<form method='POST'>";
 		wp_nonce_field( self::NONCE_ACTION );
 		submit_button(
-			__("Refill", 'integration-for-pro-litteris'),
+			__("Refill", 'integration-for-prolitteris'),
 			"primary",
 			$submit_button_name,
 			false,
@@ -106,7 +106,7 @@ class DashboardWidget extends _Component {
 		// phpcs:enable WordPress.Security.NonceVerification.Missing
 		?>
 		<div style="padding-bottom: 10px;">
-			<label><?php esc_html_e( 'Aspired pixel pool size:', 'integration-for-pro-litteris' ); ?><br/>
+			<label><?php esc_html_e( 'Aspired pixel pool size:', 'integration-for-prolitteris' ); ?><br/>
 				<input
 					type="number"
 					min="0"

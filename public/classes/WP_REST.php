@@ -116,7 +116,7 @@ class WP_REST extends _Component {
 						) {
 							return new WP_Error(
 								'rest_forbidden',
-								__( 'Sorry, you are not allowed to report this post.', 'integration-for-pro-litteris' ),
+								__( 'Sorry, you are not allowed to report this post.', 'integration-for-prolitteris' ),
 								[ 'status' => rest_authorization_required_code() ]
 							);
 						}

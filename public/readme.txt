@@ -28,7 +28,7 @@ You need a contract with ProLitteris for "Onlinewerke entschädigen" and the API
 
 = Developers =
 
-Filters and actions, for example to enable more post types, add co-authors or prevent pixels on certain posts, are documented in the [repository on GitHub](https://github.com/palasthotel/wp-integration-for-pro-litteris).
+Filters and actions, for example to enable more post types, add co-authors or prevent pixels on certain posts, are documented in the [repository on GitHub](https://github.com/palasthotel/wp-integration-for-prolitteris).
 
 == External services ==
 
@@ -42,7 +42,7 @@ The service is provided by ProLitteris, Swiss Copyright Society for Literature a
 
 == Installation ==
 
-1. Install the plugin through the "Plugins" screen in WordPress, or upload the `integration-for-pro-litteris` folder to `/wp-content/plugins/`.
+1. Install the plugin through the "Plugins" screen in WordPress, or upload the `integration-for-prolitteris` folder to `/wp-content/plugins/`.
 1. Activate it.
 1. Go to Settings → ProLitteris, enable the integration and enter your member number, username and password.
 1. Enter the ProLitteris member number and name of each author on their user profile.
