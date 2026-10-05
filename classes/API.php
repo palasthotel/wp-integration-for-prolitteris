@@ -69,7 +69,6 @@ class API {
 		$args     = array(
 			"headers"   => $headers,
 			"body"      => json_encode( $body ),
-			"sslverify" => false,
 		);
 		$response = wp_remote_post(
 			PH_PRO_LITTERIS_SYSTEM . $path,
