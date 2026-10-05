@@ -62,7 +62,7 @@ class TrackingPixel extends _Component {
 			return;
 		}
 
-		echo '<img src="' . $pixel->toUrl() . '" height="1" width="1" border="0" class="pro-litteris-pixel" />';
+		echo '<img src="' . esc_url( $pixel->toUrl() ) . '" height="1" width="1" border="0" class="pro-litteris-pixel" />';
 	}
 
 

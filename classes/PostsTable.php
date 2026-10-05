@@ -45,7 +45,7 @@ class PostsTable extends _Component {
 			$pixel = $this->plugin->repository->getPostPixel($post_id, true);
 
 			if( $pixel instanceof \WP_Error ){
-				$error = $pixel->get_error_message();
+				$error = esc_attr( $pixel->get_error_message() );
 				echo "<span title='$error' style='cursor: help;'>🔴</span>";
 				return;
 			} else if($pixel instanceof Pixel){

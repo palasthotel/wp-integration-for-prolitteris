@@ -40,10 +40,10 @@ class SelectMetaField extends MetaField {
 		$options = $this->options instanceof ProviderInterface ? $this->options->get() : $this->options;
 
 		ob_start();
-		echo "<select name='$name' id='attachments-{$post->ID}-{$this->id}' style='max-width: 100%'>";
+		echo "<select name='" . esc_attr( $name ) . "' id='" . esc_attr( "attachments-{$post->ID}-{$this->id}" ) . "' style='max-width: 100%'>";
 		foreach ($options as $option){
 		    $selected = ($value === $option->value) ? "selected='selected'" : "";
-            echo "<option value='$option->value' $selected>$option->label</option>";
+            echo "<option value='" . esc_attr( $option->value ) . "' $selected>" . esc_html( $option->label ) . "</option>";
         }
 		echo "</select>";
 		$field["html"] = ob_get_contents();
