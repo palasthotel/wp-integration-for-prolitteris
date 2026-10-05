@@ -1,7 +1,7 @@
 'use strict';
 
 import {registerPlugin} from "@wordpress/plugins"
-import {PluginSidebarMoreMenuItem, PluginSidebar} from '@wordpress/edit-post'
+import {PluginSidebarMoreMenuItem, PluginSidebar} from '@wordpress/editor'
 import Plugin from './container/Plugin.js'
 import { PanelBody } from "@wordpress/components";
 

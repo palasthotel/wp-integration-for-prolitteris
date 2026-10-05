@@ -1,4 +1,3 @@
-import flatten from "lodash/flatten";
 import {useSelect} from "@wordpress/data";
 
 const useBlocks = (deps = []) => useSelect(select => {
@@ -41,8 +40,8 @@ export const useImages = () => {
     const imageIds = [
         ...new Set([
             ...validImageBlocks.map(b => b.attributes.id),
-            ...flatten(validGalleryBlocks.map(b => b.attributes.ids)),
-            ...flatten(galleryV2Ids)
+            ...validGalleryBlocks.map(b => b.attributes.ids).flat(),
+            ...galleryV2Ids.flat()
         ]),
     ];
 
