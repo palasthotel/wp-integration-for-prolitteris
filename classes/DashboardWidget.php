@@ -6,12 +6,18 @@ namespace Palasthotel\ProLitteris;
 
 class DashboardWidget extends _Component {
 
+	const CAPABILITY = 'edit_others_posts';
+	const NONCE_ACTION = 'pro_litteris_refill_pixel_pool';
+
 	public function onCreate() {
 		parent::onCreate();
 		add_action( 'wp_dashboard_setup', array( $this, 'setup' ) );
 	}
 
 	public function setup(){
+		if ( ! current_user_can( self::CAPABILITY ) ) {
+			return;
+		}
 		wp_add_dashboard_widget(
 			Plugin::DASHBOARD_WIDGET_ID,
 			__("Pro Litteris", Plugin::DOMAIN),
@@ -22,7 +28,7 @@ class DashboardWidget extends _Component {
 
 	public function widget(){
 		$submit_button_name = "submit_refill_pixel_pool";
-		if(isset($_POST[$submit_button_name])){
+		if(isset($_POST[$submit_button_name]) && check_admin_referer( self::NONCE_ACTION )){
 			$this->plugin->repository->refillPixelPool(Options::getPixelPoolSize());
 		}
 
@@ -32,7 +38,7 @@ class DashboardWidget extends _Component {
 				printf("<p>%s</p>", __("Posts will be reported on next cron schedule:", Plugin::DOMAIN));
 				echo "<ul>";
 				foreach ($postIds as $i =>  $postId){
-					printf("<li><a href='%s'>%s</a></li>", get_edit_post_link($postId), get_the_title($postId));
+					printf("<li><a href='%s'>%s</a></li>", esc_url( get_edit_post_link($postId) ), esc_html( get_the_title($postId) ));
 					if($i > 9){
 						echo "<li>…</li>";
 						break;
@@ -62,6 +68,7 @@ class DashboardWidget extends _Component {
 			$attrs["disabled"] = true;
 		}
 		echo "<form method='POST'>";
+		wp_nonce_field( self::NONCE_ACTION );
 		submit_button(
 			__("Refill", Plugin::DOMAIN),
 			"primary",
@@ -73,8 +80,9 @@ class DashboardWidget extends _Component {
 	}
 
 	public function config(){
-		if(isset($_POST[Plugin::OPTION_PIXEL_POOL_SIZE])){
-			Options::setPixelPoolSize(intval($_POST[Plugin::OPTION_PIXEL_POOL_SIZE]));
+		// core checks the nonce of the widget form before calling this
+		if(isset($_POST[Plugin::OPTION_PIXEL_POOL_SIZE]) && current_user_can( self::CAPABILITY )){
+			Options::setPixelPoolSize(min(100, max(0, intval($_POST[Plugin::OPTION_PIXEL_POOL_SIZE]))));
 		}
 		?>
 		<div style="padding-bottom: 10px;">
