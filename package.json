@@ -1,22 +1,30 @@
 {
-  "name": "pro-litteris",
+  "name": "@palasthotel/integration-for-prolitteris",
   "version": "1.6.4",
-  "scripts": {
-    "watch": "wp-scripts start src/gutenberg.js --output-path=dist",
-    "build": "wp-scripts build src/gutenberg.js --output-path=dist",
-    "packages-update": "wp-scripts packages-update",
-    "install-legacy": "npm i install --legacy-peer-deps"
+  "private": true,
+  "description": "Integration for ProLitteris: tracking pixels and text reporting for WordPress.",
+  "license": "GPL-3.0-or-later",
+  "author": {
+    "name": "Palasthotel",
+    "email": "webmaster@palasthotel.de",
+    "url": "https://palasthotel.de"
   },
-  "dependencies": {
-    "@wordpress/components": "^27.4.0",
-    "@wordpress/data": "^9.26.0",
-    "@wordpress/dom-ready": "^3.56.0",
-    "@wordpress/edit-post": "^7.33.0",
-    "@wordpress/editor": "^13.33.0",
-    "@wordpress/element": "^5.33.0",
-    "@wordpress/plugins": "^6.24.0",
-    "@wordpress/scripts": "^33.0.0",
-    "install": "^0.13.0",
-    "swr": "^2.2.5"
+  "repository": "git+https://github.com/palasthotel/wp-integration-for-prolitteris.git",
+  "bugs": {
+    "url": "https://github.com/palasthotel/wp-integration-for-prolitteris/issues"
+  },
+  "scripts": {
+    "watch": "wp-scripts start src/gutenberg.js --output-path=public/dist",
+    "build": "wp-scripts build src/gutenberg.js --output-path=public/dist",
+    "pack": "SLUG=integration-for-prolitteris bash ../github-workflows/wp-plugin/bin/pack.sh"
+  },
+  "devDependencies": {
+    "@wordpress/components": "^41.0.0",
+    "@wordpress/data": "^10.56.0",
+    "@wordpress/date": "^5.56.0",
+    "@wordpress/editor": "^15.1.0",
+    "@wordpress/element": "^8.8.0",
+    "@wordpress/plugins": "^7.56.0",
+    "@wordpress/scripts": "^36.0.0"
   }
 }
