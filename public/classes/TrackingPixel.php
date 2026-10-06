@@ -35,34 +35,44 @@ class TrackingPixel extends _Component {
 		return in_array($postType, $this->enabledPostTypes());
 	}
 
-	public function head(){
-		?>
-		<!-- pro-litteris -->
-		<meta name="referrer" content="no-referrer-when-downgrade">
-		<?php
+	/**
+	 * The pixel of the post this page shows, if it gets one: only with the integration
+	 * enabled, on the single view of an enabled post type, and if the
+	 * pro_litteris_render_pixel filter (e.g. a consent manager) allows it. Never on
+	 * archives, where it would count a view for whatever post the loop ended with.
+	 */
+	private function currentPixel(): ?Pixel {
+		if ( ! Config::isEnabled() || ! is_singular() ) {
+			return null;
+		}
+		$postId = get_queried_object_id();
+		if ( ! $postId || ! $this->isEnabled( get_post_type( $postId ) ) ) {
+			return null;
+		}
+		if ( ! apply_filters( Plugin::FILTER_RENDER_PIXEL, true ) ) {
+			return null;
+		}
+		$pixel = $this->plugin->repository->getPostPixel( $postId );
+
+		return $pixel instanceof Pixel ? $pixel : null;
 	}
 
 	/**
-	 * Add pixel to footer if exists
-	 *
+	 * ProLitteris needs the full referrer to attribute the view to the page.
 	 */
+	public function head(){
+		if ( null === $this->currentPixel() ) {
+			return;
+		}
+		echo '<meta name="referrer" content="no-referrer-when-downgrade">' . "\n";
+	}
+
 	public function footer() {
-
-		if(!$this->isEnabled(get_post_type())){
+		$pixel = $this->currentPixel();
+		if ( null === $pixel ) {
 			return;
 		}
-
-		if(!apply_filters(Plugin::FILTER_RENDER_PIXEL, true)){
-		    return;
-        }
-
-		$pixel = $this->plugin->repository->getPostPixel(get_the_ID());
-
-		if(!($pixel instanceof Pixel)){
-			return;
-		}
-
-		echo '<img src="' . esc_url( $pixel->toUrl() ) . '" height="1" width="1" border="0" class="pro-litteris-pixel" />';
+		echo '<img src="' . esc_url( $pixel->toUrl() ) . '" height="1" width="1" border="0" class="pro-litteris-pixel" alt="" />';
 	}
 
 

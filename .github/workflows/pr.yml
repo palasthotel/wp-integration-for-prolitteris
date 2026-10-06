@@ -26,6 +26,3 @@ jobs:
         dist/gutenberg.js
         dist/gutenberg.asset.php
         cli/wp-cli.php
-        languages/integration-for-prolitteris.pot
-        languages/integration-for-prolitteris-de_CH.mo
-        languages/integration-for-prolitteris-de_DE.mo

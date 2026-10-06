@@ -21,7 +21,7 @@ class FetchPixelsResponse extends _BaseAPIResponse {
 		}
 
 		if ( empty( $this->data->domain ) || ! is_array( $this->data->pixelUids ) || count( $this->data->pixelUids ) <= 0 ) {
-			$this->error = new WP_Error( Plugin::ERROR_CODE_RESPONSE, "Unbekannte Antwort: " . $response );
+			$this->error = new WP_Error( Plugin::ERROR_CODE_RESPONSE, "Unknown response: " . $response );
 
 			return;
 		}

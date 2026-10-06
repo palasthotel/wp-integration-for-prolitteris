@@ -15,7 +15,6 @@ abstract class Plugin {
     public string $url;
     public string $basename;
 
-	private $tooLateForTextdomain;
 
 	/**
 	 * @throws ReflectionException
@@ -26,9 +25,7 @@ abstract class Plugin {
 		$this->url      = plugin_dir_url( $this->ref->getFileName() );
 		$this->basename = plugin_basename( $this->ref->getFileName() );
 
-		$this->tooLateForTextdomain = false;
 		$this->onCreate();
-		$this->tooLateForTextdomain = true;
 
 		register_activation_hook( $this->ref->getFileName(), array( $this, "onActivation" ) );
 		register_deactivation_hook( $this->ref->getFileName(), array( $this, "onDeactivation" ) );
@@ -67,20 +64,6 @@ abstract class Plugin {
 	// -----------------------------------------------------------------------------
 	// utility methods
 	// -----------------------------------------------------------------------------
-	public function loadTextdomain( string $domain, string $relativeLanguagesPath ) {
-		if ( $this->tooLateForTextdomain ) {
-			error_log( "Too late: You need to setTextdomain in onCreate Method of the Plugin class." );
-			return;
-		}
-		add_action( 'init', function () use ( $domain, $relativeLanguagesPath ) {
-			load_plugin_textdomain(
-				$domain,
-				false,
-				dirname( plugin_basename( $this->ref->getFileName() ) ) . "/" . $relativeLanguagesPath
-			);
-		} );
-	}
-
 	public function foreachMultisite(callable $onSite){
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
 			$network_site = get_network()->site_id;

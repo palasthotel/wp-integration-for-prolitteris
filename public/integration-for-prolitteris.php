@@ -12,7 +12,6 @@
  * License: GPL-3.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: integration-for-prolitteris
- * Domain Path: /languages
  */
 
 namespace Palasthotel\ProLitteris;
@@ -41,13 +40,24 @@ function legacy_plugin_is_active(): bool {
     ) {
         return false;
     }
-    add_action('admin_notices', function () {
-        echo '<div class="notice notice-error"><p>'
-            . esc_html__('Integration for ProLitteris is not loaded because the old plugin "ProLitteris" is still active. Deactivate "ProLitteris" - pixels, reports and settings are kept.', 'integration-for-prolitteris')
-            . '</p></div>';
-    });
+    admin_notice(fn() => __('Integration for ProLitteris is not loaded because the old plugin "ProLitteris" is still active. Deactivate "ProLitteris" - pixels, reports and settings are kept.', 'integration-for-prolitteris'));
 
     return true;
+}
+
+/**
+ * An error notice for administrators, on the plugins screen and the dashboard only.
+ * $message returns the text, so it is translated when the notice is shown - this
+ * file runs before init, too early for translations.
+ */
+function admin_notice(callable $message): void {
+    add_action('admin_notices', function () use ($message) {
+        $screen = get_current_screen();
+        if (! current_user_can('activate_plugins') || ! $screen || ! in_array($screen->id, ['plugins', 'plugins-network', 'dashboard', 'dashboard-network'], true)) {
+            return;
+        }
+        echo '<div class="notice notice-error"><p>' . esc_html($message()) . '</p></div>';
+    });
 }
 
 /**
@@ -60,11 +70,7 @@ function load_dependencies(): bool {
         return true;
     }
 
-    add_action('admin_notices', function () {
-        echo '<div class="notice notice-error"><p>'
-            . esc_html__('Integration for ProLitteris: dependencies are missing, run "composer install" in the plugin folder.', 'integration-for-prolitteris')
-            . '</p></div>';
-    });
+    admin_notice(fn() => __('Integration for ProLitteris: dependencies are missing, run "composer install" in the plugin folder.', 'integration-for-prolitteris'));
 
     return false;
 }
@@ -164,10 +170,6 @@ class Plugin extends Components\Plugin {
 		/**
 		 * load translations
 		 */
-		$this->loadTextdomain(
-			Plugin::DOMAIN,
-			"languages"
-		);
 
 		// ----------------------------------------
 		// all about data

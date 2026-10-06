@@ -108,11 +108,11 @@ database tables are unchanged, so pixels, reports and project code keep working.
 | `public/integration-for-prolitteris.php` | plugin header and bootstrap |
 | `public/classes/` | the plugin's PHP |
 | `public/cli/` | WP-CLI commands |
-| `public/languages/` | translations |
 | `public/dist/` | compiled editor sidebar - **generated**, not in the repository |
 | `public/vendor/` | composer dependencies (html2text) - **generated**, not in the repository |
 | `public/composer.json`, `public/composer.lock` | what `public/vendor/` is installed from |
 | `src/` | editor sidebar JavaScript source |
+| `languages/` | the translations up to 2.0, not shipped - translate.wordpress.org provides them, these are for importing there |
 | `integration-for-prolitteris.php` | DEV wrapper, loads `public/` when the repository is checked out into `wp-content/plugins/` |
 | `.github/workflows/` | CI/CD, calling the shared workflows - see [.github/WORKFLOWS.md](.github/WORKFLOWS.md) |
 
