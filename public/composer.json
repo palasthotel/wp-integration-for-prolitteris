@@ -1,6 +1,6 @@
 {
-  "name": "palasthotel/integration-for-prolitteris",
-  "description": "Integration for ProLitteris: tracking pixels and text reporting for WordPress.",
+  "name": "palasthotel/palasthotel-integration-for-prolitteris",
+  "description": "Palasthotel Integration for ProLitteris: tracking pixels and text reporting for WordPress.",
   "type": "wordpress-plugin",
   "license": "GPL-3.0-or-later",
   "autoload": {

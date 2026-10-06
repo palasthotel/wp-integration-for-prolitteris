@@ -40,7 +40,7 @@ class User extends _Component {
 		<table class="form-table">
 			<tr>
 				<th>
-					<label for="<?php echo esc_attr( $keyId ); ?>"><?php esc_html_e( 'Member ID', 'integration-for-prolitteris' ); ?></label></th>
+					<label for="<?php echo esc_attr( $keyId ); ?>"><?php esc_html_e( 'Member ID', 'palasthotel-integration-for-prolitteris' ); ?></label></th>
 				<td>
 					<input
 						type="text"
@@ -53,7 +53,7 @@ class User extends _Component {
 			</tr>
 			<tr>
 				<th>
-					<label for="<?php echo esc_attr( $keyName ); ?>"><?php esc_html_e( 'First name', 'integration-for-prolitteris' ); ?></label></th>
+					<label for="<?php echo esc_attr( $keyName ); ?>"><?php esc_html_e( 'First name', 'palasthotel-integration-for-prolitteris' ); ?></label></th>
 				<td>
 					<input
 						type="text"
@@ -62,12 +62,12 @@ class User extends _Component {
 						value="<?php echo esc_attr( $this->getProLitterisName($user->ID)); ?>"
 						class="regular-text"
 					/>
-					<p class="description"><?php esc_html_e( 'Has to match the first name stored at ProLitteris.', 'integration-for-prolitteris' ); ?></p>
+					<p class="description"><?php esc_html_e( 'Has to match the first name stored at ProLitteris.', 'palasthotel-integration-for-prolitteris' ); ?></p>
 				</td>
 			</tr>
 			<tr>
 				<th>
-					<label for="<?php echo esc_attr( $keySurname ); ?>"><?php esc_html_e( 'Last name', 'integration-for-prolitteris' ); ?></label></th>
+					<label for="<?php echo esc_attr( $keySurname ); ?>"><?php esc_html_e( 'Last name', 'palasthotel-integration-for-prolitteris' ); ?></label></th>
 				<td>
 					<input
 						type="text"
@@ -76,7 +76,7 @@ class User extends _Component {
 						value="<?php echo esc_attr( $this->getProLitterisSurname($user->ID)); ?>"
 						class="regular-text"
 					/>
-					<p class="description"><?php esc_html_e( 'Has to match the last name stored at ProLitteris.', 'integration-for-prolitteris' ); ?></p>
+					<p class="description"><?php esc_html_e( 'Has to match the last name stored at ProLitteris.', 'palasthotel-integration-for-prolitteris' ); ?></p>
 				</td>
 			</tr>
 		</table>

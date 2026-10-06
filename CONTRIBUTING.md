@@ -62,14 +62,14 @@ npm run build                     # → public/dist/
 npx wp-env start                  # http://localhost:8888, admin / password
 ```
 
-`npm run pack` stages the payload in `build/integration-for-prolitteris/` and zips it to
-`integration-for-prolitteris.zip` — the same payload the release deploys. It runs the shared script
+`npm run pack` stages the payload in `build/palasthotel-integration-for-prolitteris/` and zips it to
+`palasthotel-integration-for-prolitteris.zip` — the same payload the release deploys. It runs the shared script
 from [palasthotel/github-workflows](https://github.com/palasthotel/github-workflows),
 which has to be checked out next to this repository, and needs `composer`, because the
 packed copy gets its dependencies installed without dev dependencies and the composer
 files are dropped from it. Run `npm run build` first.
 
-The main file `public/integration-for-prolitteris.php` must keep its name. WordPress identifies an
+The main file `public/palasthotel-integration-for-prolitteris.php` must keep its name. WordPress identifies an
 installed plugin by `<directory>/<main file>` and stores that pair in `active_plugins`;
 renaming it deactivates the plugin on every site at the next update.
 
@@ -79,7 +79,7 @@ to commit and no stale asset to review.
 ## Versions
 
 Never edit version numbers by hand. `package.json`, `CHANGELOG.md`,
-`public/integration-for-prolitteris.php` and the `Stable tag:` in `public/readme.txt` are all
+`public/palasthotel-integration-for-prolitteris.php` and the `Stable tag:` in `public/readme.txt` are all
 maintained by the release pipeline — see
 [.github/WORKFLOWS.md](.github/WORKFLOWS.md).
 

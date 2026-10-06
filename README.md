@@ -1,11 +1,11 @@
-# Integration for ProLitteris (WordPress-Plugin)
+# Palasthotel Integration for ProLitteris (WordPress-Plugin)
 
 Counting pixels and automated text reports for "Onlinewerke entschädigen" (Verteilung Online)
 of [ProLitteris](https://prolitteris.ch), the Swiss collective rights management organization.
 Until 1.6.4 the plugin was called "ProLitteris" (`pro-litteris`); see
 [Moving from pro-litteris](#moving-from-pro-litteris).
 
-On WordPress.org: [integration-for-prolitteris](https://wordpress.org/plugins/integration-for-prolitteris/) (from 2.0.0).
+On WordPress.org: [palasthotel-integration-for-prolitteris](https://wordpress.org/plugins/palasthotel-integration-for-prolitteris/) (from 2.0.0).
 
 ## What it does
 
@@ -80,7 +80,7 @@ wp pro-litteris reportContents --year=<year>
 
 ## Moving from pro-litteris
 
-Version 2.0.0 has a new folder (`integration-for-prolitteris`), main file and text domain.
+Version 2.0.0 has a new folder (`palasthotel-integration-for-prolitteris`), main file and text domain.
 PHP namespace, class names, hooks, REST fields, options, post and user meta and the
 database tables are unchanged, so pixels, reports and project code keep working.
 
@@ -95,7 +95,7 @@ database tables are unchanged, so pixels, reports and project code keep working.
    | `PRO_LITTERIS_AUTO_MESSAGES` | unchanged |
 
 2. Install the new plugin.
-3. Deactivate "ProLitteris", then activate "Integration for ProLitteris". As long as the
+3. Deactivate "ProLitteris", then activate "Palasthotel Integration for ProLitteris". As long as the
    old one is active, the new one does not load and says so in wp-admin.
 4. Delete the old plugin.
 
@@ -105,7 +105,7 @@ database tables are unchanged, so pixels, reports and project code keep working.
 
 | Path | Description |
 |---|---|
-| `public/integration-for-prolitteris.php` | plugin header and bootstrap |
+| `public/palasthotel-integration-for-prolitteris.php` | plugin header and bootstrap |
 | `public/classes/` | the plugin's PHP |
 | `public/cli/` | WP-CLI commands |
 | `public/dist/` | compiled editor sidebar - **generated**, not in the repository |
@@ -113,7 +113,7 @@ database tables are unchanged, so pixels, reports and project code keep working.
 | `public/composer.json`, `public/composer.lock` | what `public/vendor/` is installed from |
 | `src/` | editor sidebar JavaScript source |
 | `languages/` | the translations up to 2.0, not shipped - translate.wordpress.org provides them, these are for importing there |
-| `integration-for-prolitteris.php` | DEV wrapper, loads `public/` when the repository is checked out into `wp-content/plugins/` |
+| `palasthotel-integration-for-prolitteris.php` | DEV wrapper, loads `public/` when the repository is checked out into `wp-content/plugins/` |
 | `.github/workflows/` | CI/CD, calling the shared workflows - see [.github/WORKFLOWS.md](.github/WORKFLOWS.md) |
 
 ## Development
@@ -123,7 +123,7 @@ npm ci
 npm run build                                   # → public/dist/
 (cd public && composer install)                 # → public/vendor/
 npx wp-env start                                # http://localhost:8888, admin / password
-npm run pack                                    # → build/integration-for-prolitteris/ and the zip
+npm run pack                                    # → build/palasthotel-integration-for-prolitteris/ and the zip
 ```
 
 `npm run pack` runs the shared `pack.sh` from

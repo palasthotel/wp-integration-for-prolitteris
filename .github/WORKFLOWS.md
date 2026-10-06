@@ -9,7 +9,7 @@ What is specific to this plugin:
 
 | | |
 |---|---|
-| wordpress.org slug | `integration-for-prolitteris` |
+| wordpress.org slug | `palasthotel-integration-for-prolitteris` |
 | version file | `package.json` (`release-type: node`) |
 | build step | `npm ci && npm run build` in `pr.yml` and the deploy - `public/dist/` (the editor sidebar) is not in the repository |
 | `required-files` | the built `dist/gutenberg.js` and `.asset.php`, the composer autoloader and html2text, the WP-CLI commands |

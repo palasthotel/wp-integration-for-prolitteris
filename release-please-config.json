@@ -3,7 +3,7 @@
   "packages": {
     ".": {
       "release-type": "node",
-      "package-name": "@palasthotel/integration-for-prolitteris",
+      "package-name": "@palasthotel/palasthotel-integration-for-prolitteris",
       "changelog-path": "CHANGELOG.md",
       "include-component-in-tag": false,
       "include-v-in-tag": true,

@@ -14,7 +14,7 @@ import {__, sprintf} from "@wordpress/i18n";
 const Pixel = ({pixel = {}})=>{
     const {url} = pixel;
     return <TextControl
-        label={__("Counting pixel", 'integration-for-prolitteris')}
+        label={__("Counting pixel", 'palasthotel-integration-for-prolitteris')}
         value={url}
         readOnly
     />
@@ -52,7 +52,7 @@ const Message = ({message = {}, draft = {}, pushError, onSubmitReport})=>{
 
     if(typeof draft.error === typeof ""){
         return <>
-            <h3>{__("Report", 'integration-for-prolitteris')}</h3>
+            <h3>{__("Report", 'palasthotel-integration-for-prolitteris')}</h3>
             <Notice
                 status="warning"
                 isDismissible={false}
@@ -79,28 +79,28 @@ const Message = ({message = {}, draft = {}, pushError, onSubmitReport})=>{
     } = message.pixelUid ? message : draft;
 
     return <>
-        <h3>{__("Report", 'integration-for-prolitteris')}</h3>
+        <h3>{__("Report", 'palasthotel-integration-for-prolitteris')}</h3>
         <TextControl
-            label={__("UID", 'integration-for-prolitteris')}
+            label={__("UID", 'palasthotel-integration-for-prolitteris')}
             value={pixelUid}
             readOnly
         />
         <TextControl
-            label={__("Title", 'integration-for-prolitteris')}
+            label={__("Title", 'palasthotel-integration-for-prolitteris')}
             value={title}
             readOnly
         />
         <TextareaControl
             label={sprintf(
                 /* translators: %d: number of characters */
-                __("Text (%d characters)", 'integration-for-prolitteris'),
+                __("Text (%d characters)", 'palasthotel-integration-for-prolitteris'),
                 plaintext.length
             )}
             value={plaintext}
             readOnly
         />
         <BaseControl
-            label={__("Authors", 'integration-for-prolitteris')}
+            label={__("Authors", 'palasthotel-integration-for-prolitteris')}
         >
             <ul style={{
                 listStylePosition: 'inside',
@@ -125,7 +125,7 @@ const Message = ({message = {}, draft = {}, pushError, onSubmitReport})=>{
             </ul>
         </BaseControl>
         <BaseControl
-            label={__("Images", 'integration-for-prolitteris')}
+            label={__("Images", 'palasthotel-integration-for-prolitteris')}
         >
             <ul style={{
                 listStylePosition: 'inside',
@@ -169,30 +169,30 @@ const Message = ({message = {}, draft = {}, pushError, onSubmitReport})=>{
         {isReported ?
             <>
                 <p className="description">{dateFormat(parseInt(message.reported)*1000)}.</p>
-                <p>{__("Reported successfully 🎉", 'integration-for-prolitteris')}</p>
+                <p>{__("Reported successfully 🎉", 'palasthotel-integration-for-prolitteris')}</p>
                 <Button
                     disabled={isDirtyState || isSaving}
                     isSecondary
-                    title={__("Save the post before reporting.", 'integration-for-prolitteris')}
+                    title={__("Save the post before reporting.", 'palasthotel-integration-for-prolitteris')}
                     onClick={onSubmitReport}
-                >{__("Update report", 'integration-for-prolitteris')}</Button>
-                <p className="description">{__("Only the authors can be updated.", 'integration-for-prolitteris')}</p>
+                >{__("Update report", 'palasthotel-integration-for-prolitteris')}</Button>
+                <p className="description">{__("Only the authors can be updated.", 'palasthotel-integration-for-prolitteris')}</p>
             </>
             :
             <Button
                 disabled={isDirtyState || isSaving || isReported}
                 isPrimary
-                title={__("Save the post before reporting.", 'integration-for-prolitteris')}
+                title={__("Save the post before reporting.", 'palasthotel-integration-for-prolitteris')}
                 onClick={onSubmitReport}
             >
-                {__("Report now", 'integration-for-prolitteris')}
+                {__("Report now", 'palasthotel-integration-for-prolitteris')}
             </Button>
         }
 
         <hr />
 
         <BaseControl
-            label={__("Other images", 'integration-for-prolitteris')}
+            label={__("Other images", 'palasthotel-integration-for-prolitteris')}
         >
             <ul style={{
                 listStylePosition: 'inside',
@@ -228,13 +228,13 @@ const Plugin = ()=>{
     if(typeof state.error === typeof ""){
         return <p>{sprintf(
             /* translators: %s: error message */
-            __("Error: %s", 'integration-for-prolitteris'),
+            __("Error: %s", 'palasthotel-integration-for-prolitteris'),
             state.error
         )}</p>
     }
     const pixel = state.pixel;
     if(!pixel){
-        return <p>{__("No valid pixel found.", 'integration-for-prolitteris')}</p>
+        return <p>{__("No valid pixel found.", 'palasthotel-integration-for-prolitteris')}</p>
     }
 
     return <>

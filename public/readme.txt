@@ -1,4 +1,4 @@
-=== Integration for ProLitteris ===
+=== Palasthotel Integration for ProLitteris ===
 Contributors: palasthotel, edwardbock, janaeggebrecht
 Donate link: https://palasthotel.de/
 Tags: prolitteris, copyright, remuneration, switzerland, counting pixel
@@ -28,7 +28,7 @@ You need a contract with ProLitteris for "Onlinewerke entschädigen" and the API
 
 = Developers =
 
-Filters and actions, for example to enable more post types, add co-authors or prevent pixels on certain posts, are documented in the [repository on GitHub](https://github.com/palasthotel/wp-integration-for-prolitteris).
+Filters and actions, for example to enable more post types, add co-authors or prevent pixels on certain posts, are documented in the [repository on GitHub](https://github.com/palasthotel/wp-palasthotel-integration-for-prolitteris).
 
 == External services ==
 
@@ -42,7 +42,7 @@ The service is provided by ProLitteris, Swiss Copyright Society for Literature a
 
 == Installation ==
 
-1. Install the plugin through the "Plugins" screen in WordPress, or upload the `integration-for-prolitteris` folder to `/wp-content/plugins/`.
+1. Install the plugin through the "Plugins" screen in WordPress, or upload the `palasthotel-integration-for-prolitteris` folder to `/wp-content/plugins/`.
 1. Activate it.
 1. Go to Settings → ProLitteris, enable the integration and enter your member number, username and password.
 1. Enter the ProLitteris member number and name of each author on their user profile.
@@ -66,7 +66,7 @@ ProLitteris only remunerates texts with at least 1500 characters, and every auth
 
 = What happened to the plugin "ProLitteris" (pro-litteris)? =
 
-It is this plugin. Up to version 1.6.4 it was only available on GitHub, installed in the folder `pro-litteris`. Version 2.0.0 is the first release on wordpress.org, with a new folder and text domain: deactivate the old plugin before activating this one. Pixels, reports and settings are kept, they are stored in the database. If you configured it in `wp-config.php`, rename the constants: `PH_PRO_LITTERIS` to `PRO_LITTERIS_ENABLED`, `PH_PRO_LITTERIS_SYSTEM` to `PRO_LITTERIS_SYSTEM` and `PH_PRO_LITTERIS_CREDENTIALS` to `PRO_LITTERIS_CREDENTIALS`; the old names are no longer read. `PRO_LITTERIS_AUTO_MESSAGES` stays as it is.
+It is this plugin. Up to version 1.6.4 it was only available on GitHub, installed in the folder `pro-litteris`. Since 2.0.0 it has a new name, folder and text domain and is published on wordpress.org: deactivate the old plugin before activating this one. Pixels, reports and settings are kept, they are stored in the database. If you configured it in `wp-config.php`, rename the constants: `PH_PRO_LITTERIS` to `PRO_LITTERIS_ENABLED`, `PH_PRO_LITTERIS_SYSTEM` to `PRO_LITTERIS_SYSTEM` and `PH_PRO_LITTERIS_CREDENTIALS` to `PRO_LITTERIS_CREDENTIALS`; the old names are no longer read. `PRO_LITTERIS_AUTO_MESSAGES` stays as it is.
 
 == Changelog ==
 

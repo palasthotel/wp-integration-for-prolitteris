@@ -12,8 +12,8 @@ jobs:
   checks:
     uses: palasthotel/github-workflows/.github/workflows/wp-plugin-pr.yml@v1
     with:
-      slug: integration-for-prolitteris
-      dev-plugin-name: Integration for ProLitteris - DEV
+      slug: palasthotel-integration-for-prolitteris
+      dev-plugin-name: Palasthotel Integration for ProLitteris - DEV
       # Requires PHP: 8.2
       php-versions: '["8.2", "8.3", "8.4"]'
       # public/dist and public/vendor are not in the repository; the pipeline builds them
