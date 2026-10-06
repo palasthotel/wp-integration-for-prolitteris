@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.1.0](https://github.com/palasthotel/wp-palasthotel-integration-for-prolitteris/compare/v2.0.1...v2.1.0) (2026-10-06)
+
+
+### Features
+
+* get translations from translate.wordpress.org, translate the editor sidebar ([98495c0](https://github.com/palasthotel/wp-palasthotel-integration-for-prolitteris/commit/98495c0bf23c2fc3ebbeefc2f6a211116825563a))
+
+
+### Bug Fixes
+
+* address the wordpress.org review (pixels only when enabled, admin notices, translations) ([c2b47c2](https://github.com/palasthotel/wp-palasthotel-integration-for-prolitteris/commit/c2b47c29e5b08b5b15e818e13df889d2801f4abc))
+* render and assign counting pixels only with the integration enabled ([fcdc4bd](https://github.com/palasthotel/wp-palasthotel-integration-for-prolitteris/commit/fcdc4bd14ca105f3d6372b34d70b34984238c4b9))
+* show the plugin's admin notices to administrators only, on the plugins screen and dashboard ([4789515](https://github.com/palasthotel/wp-palasthotel-integration-for-prolitteris/commit/4789515f37152d8da5ec7c947cfba1c246999246))
+
 ## [2.0.1](https://github.com/palasthotel/wp-integration-for-prolitteris/compare/v2.0.0...v2.0.1) (2026-10-05)
 
 
