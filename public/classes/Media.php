@@ -14,14 +14,23 @@ class Media extends _Component {
 	private $attachment_author_field;
 
 	public function onCreate() {
-		$this->attachment_author_field = SelectMetaField::build( Plugin::ATTACHMENT_META_AUTHOR )
-		                                                ->options( new AuthorListProvider() )
-		                                                ->label( "Pro-Litteris" )
-		                                                ->help( "Bildautor für die Meldung an Pro-Litteris." );
+		// on init: the label is translated, and translations must not load earlier
+		add_action( 'init', [ $this, 'field' ] );
+	}
+
+	public function field(): SelectMetaField {
+		if ( null === $this->attachment_author_field ) {
+			$this->attachment_author_field = SelectMetaField::build( Plugin::ATTACHMENT_META_AUTHOR )
+			                                                ->options( new AuthorListProvider() )
+			                                                ->label( __( 'ProLitteris', 'integration-for-prolitteris' ) )
+			                                                ->help( __( 'Image originator reported to ProLitteris.', 'integration-for-prolitteris' ) );
+		}
+
+		return $this->attachment_author_field;
 	}
 
 	public function getAuthor( $attachment_id ) {
-		return $this->attachment_author_field->getValue( $attachment_id );
+		return $this->field()->getValue( $attachment_id );
 	}
 
 }

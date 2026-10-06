@@ -12,7 +12,6 @@
  * License: GPL-3.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: integration-for-prolitteris
- * Domain Path: /languages
  */
 
 namespace Palasthotel\ProLitteris;
@@ -171,11 +170,6 @@ class Plugin extends Components\Plugin {
 		/**
 		 * load translations
 		 */
-
-		$this->loadTextdomain(
-			Plugin::DOMAIN,
-			"languages"
-		);
 
 		// ----------------------------------------
 		// all about data

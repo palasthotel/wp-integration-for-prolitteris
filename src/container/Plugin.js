@@ -9,11 +9,12 @@ import {
 } from "../utils.js";
 import {useImages} from "../hooks/use-blocks.js";
 import {useEffect, useState} from "@wordpress/element";
+import {__, sprintf} from "@wordpress/i18n";
 
 const Pixel = ({pixel = {}})=>{
     const {url} = pixel;
     return <TextControl
-        label="Pixel"
+        label={__("Counting pixel", 'integration-for-prolitteris')}
         value={url}
         readOnly
     />
@@ -51,7 +52,7 @@ const Message = ({message = {}, draft = {}, pushError, onSubmitReport})=>{
 
     if(typeof draft.error === typeof ""){
         return <>
-            <h3>Meldung</h3>
+            <h3>{__("Report", 'integration-for-prolitteris')}</h3>
             <Notice
                 status="warning"
                 isDismissible={false}
@@ -78,24 +79,28 @@ const Message = ({message = {}, draft = {}, pushError, onSubmitReport})=>{
     } = message.pixelUid ? message : draft;
 
     return <>
-        <h3>Meldung</h3>
+        <h3>{__("Report", 'integration-for-prolitteris')}</h3>
         <TextControl
-            label="UID"
+            label={__("UID", 'integration-for-prolitteris')}
             value={pixelUid}
             readOnly
         />
         <TextControl
-            label="Titel"
+            label={__("Title", 'integration-for-prolitteris')}
             value={title}
             readOnly
         />
         <TextareaControl
-            label={`Text (${plaintext.length} Zeichen)`}
+            label={sprintf(
+                /* translators: %d: number of characters */
+                __("Text (%d characters)", 'integration-for-prolitteris'),
+                plaintext.length
+            )}
             value={plaintext}
             readOnly
         />
         <BaseControl
-            label="Autoren"
+            label={__("Authors", 'integration-for-prolitteris')}
         >
             <ul style={{
                 listStylePosition: 'inside',
@@ -120,7 +125,7 @@ const Message = ({message = {}, draft = {}, pushError, onSubmitReport})=>{
             </ul>
         </BaseControl>
         <BaseControl
-            label="Bilder"
+            label={__("Images", 'integration-for-prolitteris')}
         >
             <ul style={{
                 listStylePosition: 'inside',
@@ -164,30 +169,30 @@ const Message = ({message = {}, draft = {}, pushError, onSubmitReport})=>{
         {isReported ?
             <>
                 <p className="description">{dateFormat(parseInt(message.reported)*1000)}.</p>
-                <p>Meldung war erfolgreich 🎉</p>
+                <p>{__("Reported successfully 🎉", 'integration-for-prolitteris')}</p>
                 <Button
                     disabled={isDirtyState || isSaving}
                     isSecondary
-                    title="Bitte speichern vor dem Melden."
+                    title={__("Save the post before reporting.", 'integration-for-prolitteris')}
                     onClick={onSubmitReport}
-                >Meldung aktualsieren</Button>
-                <p className="description">Ausschließlich Autoren können aktualisiert werden.</p>
+                >{__("Update report", 'integration-for-prolitteris')}</Button>
+                <p className="description">{__("Only the authors can be updated.", 'integration-for-prolitteris')}</p>
             </>
             :
             <Button
                 disabled={isDirtyState || isSaving || isReported}
                 isPrimary
-                title="Bitte speichern vor dem Melden."
+                title={__("Save the post before reporting.", 'integration-for-prolitteris')}
                 onClick={onSubmitReport}
             >
-                Jetzt melden
+                {__("Report now", 'integration-for-prolitteris')}
             </Button>
         }
 
         <hr />
 
         <BaseControl
-            label="Weitere Bilder"
+            label={__("Other images", 'integration-for-prolitteris')}
         >
             <ul style={{
                 listStylePosition: 'inside',
@@ -221,11 +226,15 @@ const Plugin = ()=>{
     }
 
     if(typeof state.error === typeof ""){
-        return <p>Error: {state.error}</p>
+        return <p>{sprintf(
+            /* translators: %s: error message */
+            __("Error: %s", 'integration-for-prolitteris'),
+            state.error
+        )}</p>
     }
     const pixel = state.pixel;
     if(!pixel){
-        return <p>No valid pixel found.</p>
+        return <p>{__("No valid pixel found.", 'integration-for-prolitteris')}</p>
     }
 
     return <>

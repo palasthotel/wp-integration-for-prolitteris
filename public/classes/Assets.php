@@ -14,6 +14,7 @@ class Assets extends _Component {
 			$info["dependencies"],
 			$info["version"]
 		);
+		wp_set_script_translations( Plugin::HANDLE_GUTENBERG_JS, 'integration-for-prolitteris' );
 
 		if(file_exists($this->plugin->path."dist/gutenberg.css")){
 			wp_enqueue_style(
