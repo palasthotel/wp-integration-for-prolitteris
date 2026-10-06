@@ -10,8 +10,9 @@ permissions:
 
 jobs:
   checks:
-    uses: palasthotel/github-workflows/.github/workflows/wp-plugin-pr.yml@v1
+    uses: palasthotel/github-workflows/.github/workflows/wp-plugin-pr.yml@feat/keep-composer-json
     with:
+      tools-ref: feat/keep-composer-json
       slug: palasthotel-integration-for-prolitteris
       dev-plugin-name: Palasthotel Integration for ProLitteris - DEV
       # Requires PHP: 8.2
@@ -26,3 +27,5 @@ jobs:
         dist/gutenberg.js
         dist/gutenberg.asset.php
         cli/wp-cli.php
+        composer.json
+        composer.lock
