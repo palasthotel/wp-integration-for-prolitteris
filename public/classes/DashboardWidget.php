@@ -15,7 +15,7 @@ class DashboardWidget extends _Component {
 	}
 
 	public function setup(){
-		if ( ! current_user_can( self::CAPABILITY ) ) {
+		if ( ! Config::isEnabled() || ! current_user_can( self::CAPABILITY ) ) {
 			return;
 		}
 		wp_add_dashboard_widget(

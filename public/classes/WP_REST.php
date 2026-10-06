@@ -16,6 +16,11 @@ class WP_REST extends _Component {
 
 	public function init(){
 
+		// no pixels are assigned or handed out before the integration is enabled
+		if ( ! Config::isEnabled() ) {
+			return;
+		}
+
 		$post_types = $this->plugin->pixel->enabledPostTypes();
 		if ( empty( $post_types ) ) {
 			return;
@@ -68,7 +73,7 @@ class WP_REST extends _Component {
 					}
 
 					if ( ! ( $pixel instanceof Pixel ) ) {
-						$response->info = "Konnte keinen Pixel für diesen Inhalt zuweisen.";
+						$response->info = __( "No pixel could be assigned to this post.", 'integration-for-prolitteris' );
 						return $response;
 					}
 

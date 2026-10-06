@@ -19,7 +19,7 @@ class PostsTable extends _Component {
 
 	public function add_column($columns){
 
-		if(!$this->plugin->pixel->isEnabled(get_post_type())) return $columns;
+		if(!Config::isEnabled() || !$this->plugin->pixel->isEnabled(get_post_type())) return $columns;
 
 		$newCols = array();
 		$added = false;
