@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Plugin Name: Integration for ProLitteris
- * Plugin URI: https://github.com/palasthotel/wp-integration-for-prolitteris
+ * Plugin Name: Palasthotel Integration for ProLitteris
+ * Plugin URI: https://github.com/palasthotel/wp-palasthotel-integration-for-prolitteris
  * Description: Adds the ProLitteris tracking pixel to posts and reports texts to ProLitteris ("Onlinewerke entschädigen").
  * Version: 2.0.1
  * Requires at least: 6.6
@@ -11,7 +11,7 @@
  * Author URI: https://palasthotel.de
  * License: GPL-3.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain: integration-for-prolitteris
+ * Text Domain: palasthotel-integration-for-prolitteris
  */
 
 namespace Palasthotel\ProLitteris;
@@ -40,7 +40,7 @@ function legacy_plugin_is_active(): bool {
     ) {
         return false;
     }
-    admin_notice(fn() => __('Integration for ProLitteris is not loaded because the old plugin "ProLitteris" is still active. Deactivate "ProLitteris" - pixels, reports and settings are kept.', 'integration-for-prolitteris'));
+    admin_notice(fn() => __('Palasthotel Integration for ProLitteris is not loaded because the old plugin "ProLitteris" is still active. Deactivate "ProLitteris" - pixels, reports and settings are kept.', 'palasthotel-integration-for-prolitteris'));
 
     return true;
 }
@@ -70,7 +70,7 @@ function load_dependencies(): bool {
         return true;
     }
 
-    admin_notice(fn() => __('Integration for ProLitteris: dependencies are missing, run "composer install" in the plugin folder.', 'integration-for-prolitteris'));
+    admin_notice(fn() => __('Palasthotel Integration for ProLitteris: dependencies are missing, run "composer install" in the plugin folder.', 'palasthotel-integration-for-prolitteris'));
 
     return false;
 }
@@ -96,7 +96,7 @@ class Plugin extends Components\Plugin {
 	/**
 	 * Domain for translation
 	 */
-	const DOMAIN = "integration-for-prolitteris";
+	const DOMAIN = "palasthotel-integration-for-prolitteris";
 
 	/**
 	 * ids

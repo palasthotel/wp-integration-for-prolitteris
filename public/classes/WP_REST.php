@@ -73,7 +73,7 @@ class WP_REST extends _Component {
 					}
 
 					if ( ! ( $pixel instanceof Pixel ) ) {
-						$response->info = __( "No pixel could be assigned to this post.", 'integration-for-prolitteris' );
+						$response->info = __( "No pixel could be assigned to this post.", 'palasthotel-integration-for-prolitteris' );
 						return $response;
 					}
 
@@ -121,7 +121,7 @@ class WP_REST extends _Component {
 						) {
 							return new WP_Error(
 								'rest_forbidden',
-								__( 'Sorry, you are not allowed to report this post.', 'integration-for-prolitteris' ),
+								__( 'Sorry, you are not allowed to report this post.', 'palasthotel-integration-for-prolitteris' ),
 								[ 'status' => rest_authorization_required_code() ]
 							);
 						}

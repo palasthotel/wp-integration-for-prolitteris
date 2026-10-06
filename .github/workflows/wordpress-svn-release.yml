@@ -20,7 +20,7 @@ jobs:
   deploy:
     uses: palasthotel/github-workflows/.github/workflows/wp-plugin-svn-deploy.yml@v1
     with:
-      slug: integration-for-prolitteris
+      slug: palasthotel-integration-for-prolitteris
       version: ${{ github.event.inputs.version }}
       build-command: npm ci && npm run build
     secrets: inherit

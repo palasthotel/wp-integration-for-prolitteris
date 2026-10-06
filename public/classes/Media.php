@@ -22,8 +22,8 @@ class Media extends _Component {
 		if ( null === $this->attachment_author_field ) {
 			$this->attachment_author_field = SelectMetaField::build( Plugin::ATTACHMENT_META_AUTHOR )
 			                                                ->options( new AuthorListProvider() )
-			                                                ->label( __( 'ProLitteris', 'integration-for-prolitteris' ) )
-			                                                ->help( __( 'Image originator reported to ProLitteris.', 'integration-for-prolitteris' ) );
+			                                                ->label( __( 'ProLitteris', 'palasthotel-integration-for-prolitteris' ) )
+			                                                ->help( __( 'Image originator reported to ProLitteris.', 'palasthotel-integration-for-prolitteris' ) );
 		}
 
 		return $this->attachment_author_field;

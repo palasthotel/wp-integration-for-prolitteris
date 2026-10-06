@@ -1,22 +1,22 @@
 {
-  "name": "@palasthotel/integration-for-prolitteris",
+  "name": "@palasthotel/palasthotel-integration-for-prolitteris",
   "version": "2.0.1",
   "private": true,
-  "description": "Integration for ProLitteris: tracking pixels and text reporting for WordPress.",
+  "description": "Palasthotel Integration for ProLitteris: tracking pixels and text reporting for WordPress.",
   "license": "GPL-3.0-or-later",
   "author": {
     "name": "Palasthotel",
     "email": "webmaster@palasthotel.de",
     "url": "https://palasthotel.de"
   },
-  "repository": "git+https://github.com/palasthotel/wp-integration-for-prolitteris.git",
+  "repository": "git+https://github.com/palasthotel/wp-palasthotel-integration-for-prolitteris.git",
   "bugs": {
-    "url": "https://github.com/palasthotel/wp-integration-for-prolitteris/issues"
+    "url": "https://github.com/palasthotel/wp-palasthotel-integration-for-prolitteris/issues"
   },
   "scripts": {
     "watch": "wp-scripts start src/gutenberg.js --output-path=public/dist",
     "build": "wp-scripts build src/gutenberg.js --output-path=public/dist",
-    "pack": "SLUG=integration-for-prolitteris bash ../github-workflows/wp-plugin/bin/pack.sh"
+    "pack": "SLUG=palasthotel-integration-for-prolitteris bash ../github-workflows/wp-plugin/bin/pack.sh"
   },
   "devDependencies": {
     "@wordpress/components": "^41.0.0",
