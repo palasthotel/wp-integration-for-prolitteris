@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.1](https://github.com/palasthotel/wp-palasthotel-integration-for-prolitteris/compare/v2.1.0...v2.1.1) (2026-10-08)
+
+
+### Bug Fixes
+
+* name the dashboard widget ProLitteris like the rest of the plugin ([2d44cd0](https://github.com/palasthotel/wp-palasthotel-integration-for-prolitteris/commit/2d44cd00c27877098df4acfd0d0140b039b40759))
+* report automatically and list on the dashboard only posts with the minimum length ([7e65f5c](https://github.com/palasthotel/wp-palasthotel-integration-for-prolitteris/commit/7e65f5c70905f1f641d20d43e68c5d49bb991a3b))
+
 ## [2.1.0](https://github.com/palasthotel/wp-palasthotel-integration-for-prolitteris/compare/v2.0.1...v2.1.0) (2026-10-06)
 
 
