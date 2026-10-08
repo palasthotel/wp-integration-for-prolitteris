@@ -20,7 +20,7 @@ class DashboardWidget extends _Component {
 		}
 		wp_add_dashboard_widget(
 			Plugin::DASHBOARD_WIDGET_ID,
-			__("Pro Litteris", 'palasthotel-integration-for-prolitteris'),
+			__("ProLitteris", 'palasthotel-integration-for-prolitteris'),
 			[$this, 'widget'],
 			[$this, 'config']
 		);
