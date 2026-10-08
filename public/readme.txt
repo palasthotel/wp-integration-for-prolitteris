@@ -5,7 +5,7 @@ Tags: prolitteris, copyright, remuneration, switzerland, counting pixel
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -78,6 +78,11 @@ It is this plugin. Up to version 1.6.4 it was only available on GitHub, installe
 6. The image originator of a media file, reported along with the posts that use the image.
 
 == Changelog ==
+
+= 2.1.1 =
+**Bug Fixes**
+* name the dashboard widget ProLitteris like the rest of the plugin (2d44cd0)
+* report automatically and list on the dashboard only posts with the minimum length (7e65f5c)
 
 = 2.1.0 =
 **⚠ BREAKING CHANGES**
