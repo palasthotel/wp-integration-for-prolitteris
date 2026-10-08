@@ -171,10 +171,22 @@ class Repository extends _Component {
 		if ( ! $this->isAutoMessagesEnabled() ) {
 			return;
 		}
-		$postIds = $this->database->getPostIdsReadyForMessage();
-		foreach ( $postIds as $postId ) {
+		foreach ( $this->getPostIdsReadyToReport() as $postId ) {
 			$this->reportPost( $postId );
 		}
+	}
+
+	/**
+	 * Posts the next automatic run reports. The minimum length is checked here and not in
+	 * the query: the text is built from the rendered content.
+	 *
+	 * @return array
+	 */
+	public function getPostIdsReadyToReport() {
+		return array_values( array_filter(
+			$this->database->getPostIdsReadyForMessage(),
+			fn( $postId ) => $this->plugin->post->canBeReported( $postId )
+		) );
 	}
 
 	/**

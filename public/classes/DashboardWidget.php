@@ -43,7 +43,7 @@ class DashboardWidget extends _Component {
 		}
 
 		if($this->plugin->repository->isAutoMessagesEnabled()){
-			$postIds = $this->plugin->repository->database->getPostIdsReadyForMessage();
+			$postIds = $this->plugin->repository->getPostIdsReadyToReport();
 			if(count($postIds) > 0 ){
 				printf("<p>%s</p>", esc_html__("Posts will be reported on next cron schedule:", 'palasthotel-integration-for-prolitteris'));
 				echo "<ul>";
