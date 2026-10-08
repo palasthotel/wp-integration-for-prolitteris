@@ -68,6 +68,15 @@ ProLitteris only remunerates texts with at least 1500 characters, and every auth
 
 It is this plugin. Up to version 1.6.4 it was only available on GitHub, installed in the folder `pro-litteris`. Since 2.0.0 it has a new name, folder and text domain and is published on wordpress.org: deactivate the old plugin before activating this one. Pixels, reports and settings are kept, they are stored in the database. If you configured it in `wp-config.php`, rename the constants: `PH_PRO_LITTERIS` to `PRO_LITTERIS_ENABLED`, `PH_PRO_LITTERIS_SYSTEM` to `PRO_LITTERIS_SYSTEM` and `PH_PRO_LITTERIS_CREDENTIALS` to `PRO_LITTERIS_CREDENTIALS`; the old names are no longer read. `PRO_LITTERIS_AUTO_MESSAGES` stays as it is.
 
+== Screenshots ==
+
+1. The ProLitteris sidebar in the block editor: the post's counting pixel and the report with its text, authors and image originators, ready to be sent.
+2. The ProLitteris column in the posts list shows which posts are reported, ready to report or too short.
+3. Settings → ProLitteris: credentials, automatic reporting, minimum length and the size of the pixel pool.
+4. The dashboard widget lists the posts that will be reported next and refills the pixel pool on demand.
+5. The ProLitteris member number and name on a user profile.
+6. The image originator of a media file, reported along with the posts that use the image.
+
 == Changelog ==
 
 = 2.1.0 =
